@@ -1,0 +1,8 @@
+node_modules
+dist
+config.ts
+test
+docs
+todo.md
+.vscode
+.cmd
