@@ -11,6 +11,7 @@
 Fastest Technical Indicators written in typescript    
 This project is transpiled version of TulipCharts/tulipindicators (C version)    
 So all algorithms are available in `./reference` folder    
+All indicators are `0.3x` to `100x` faster than available indicators on github.
 
 ### Benchmark and Tests
 All of the indicators are super fast (because of good algorithms) and heavily tested    
