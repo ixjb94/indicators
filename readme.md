@@ -5,7 +5,7 @@
 ![last commit](https://img.shields.io/github/last-commit/ixjb94/indicators)
 
 
-![logo](https://raw.githubusercontent.com/ixjb94/indicators/main/images/bar-graph.png "logo")
+![logo](https://raw.githubusercontent.com/ixjb94/indicators/master/images/bar-graph.png "logo")
 
 ### About
 Fastest Technical Indicators written in typescript    
@@ -51,7 +51,7 @@ let {
 ```
 
 ### Types & Intellisense
-![types](https://raw.githubusercontent.com/ixjb94/indicators/main/images/types-intel.png "types")
+![types](https://raw.githubusercontent.com/ixjb94/indicators/master/images/types-intel.png "types")
 
 
 ### Indicators
