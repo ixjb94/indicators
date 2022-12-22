@@ -57,7 +57,7 @@ let {
 ### Indicators
 ✅ = available and fastest    
 ❌ = Indicator is not available    
-🔄 = under develope    
+🔄 = developing...    
 Compared to:    
 node-talib, tulipnode, technicalindicators, pandas_ta
 
