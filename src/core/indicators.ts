@@ -1662,42 +1662,6 @@ export class Indicators {
 		return output
 	}
 
-	/**
-	 * @TODO Bad time complexity
-	 * Formula: WMA(2*WMA(n/2) - WMA(n)), sqrt(n))
-	 * 
-	 * @param source 
-	 * @param period 
-	 * @param size 
-	 * @returns 
-	 */
-	async hma(source: number[], period: number, size=source.length): Promise<Array<number>> {
-		
-		let w1 = await this.wma(source, period / 2)
-		let w2 = await this.wma(source, period)
-
-		w1 = w1.map(w => w * 2)
-
-		w1 = await this.normalize(source.length, w1)
-		w2 = await this.normalize(source.length, w2)
-
-		let w3: number[] = []
-
-		for (let index = 0; index < size; index++) {
-			
-			let w1Data = w1[index]
-			let w2Data = w2[index]
-
-			w3.push(w1Data - w2Data)
-		}
-		
-		// Remove null
-		w3 = w3.filter(d => d)
-
-		let result: number[] = await this.wma(w3, Math.floor(Math.sqrt(period)))
-
-		return result
-	}
 
 	/**
 	 * 
@@ -1705,65 +1669,71 @@ export class Indicators {
 	 * @param period 
 	 * @param size 
 	 * @returns 
-	 * @deprecated
 	 */
-	async DEP_hma(input: number[], period: number, size=input.length): Promise<Array<number>> {
+	async hma(input: number[], period: number, size=input.length): Promise<Array<number>> {
 
 		let output: number[] = []
-		
-		const period2 = period / 2
-		const periodsqrt = Math.sqrt(period)
-		const weights = period * (period+1) / 2
-		const weights2 = period2 * (period2+1) / 2
-		const weightssqrt = periodsqrt * (periodsqrt+1) / 2
-
-		let sum = 0;
-		let weight_sum = 0;
+	
+		const period2 = Math.floor(period / 2)
+		const periodsqrt = Math.floor(Math.sqrt(period))
+	
+		const weights = period * (period+1) / 2;
+		const weights2 = period2 * (period2+1) / 2;
+		const weightssqrt = periodsqrt * (periodsqrt+1) / 2;
+	
+		let sum = 0; /* Flat sum of previous numbers. */
+		let weight_sum = 0; /* Weighted sum of previous numbers. */
+	
 		let sum2 = 0;
 		let weight_sum2 = 0;
+	
 		let sumsqrt = 0;
 		let weight_sumsqrt = 0;
-
-		for (let i = 0; i < period-1; ++i) {
+	
+		/* Setup up the WMA(period) and WMA(period/2) on the input. */
+		let i;
+		for (i = 0; i < period-1; ++i) {
 			weight_sum += input[i] * (i+1);
 			sum += input[i];
-
+	
 			if (i >= period - period2) {
 				weight_sum2 += input[i] * (i+1-(period-period2));
 				sum2 += input[i];
 			}
-
 		}
-
-		// let buff = new ti_buffer(periodsqrt)
-		const buff = new ti_buffer(Math.floor(periodsqrt))
-
-		for (let i = period-1; i < size; ++i) {
-			
+	
+		let buff = new ti_buffer(periodsqrt)
+	
+		for (i = period-1; i < size; ++i) {
 			weight_sum += input[i] * period;
 			sum += input[i];
+	
 			weight_sum2 += input[i] * period2;
 			sum2 += input[i];
-			
+	
 			const wma = weight_sum / weights;
 			const wma2 = weight_sum2 / weights2;
 			const diff = 2 * wma2 - wma;
-
+	
 			weight_sumsqrt += diff * periodsqrt;
 			sumsqrt += diff;
-			
-			buff.qpush(diff);
-
+	
+			buff.qpush(diff)
+	
 			if (i >= (period-1) + (periodsqrt-1)) {
 				output.push(weight_sumsqrt / weightssqrt)
+	
 				weight_sumsqrt -= sumsqrt;
-				sumsqrt -= buff.get(1);
+				// sumsqrt -= ti_buffer_get(buff, 1)
+				sumsqrt -= buff.get(1)
 			} else {
-				weight_sumsqrt -= sumsqrt;
+				weight_sumsqrt -= sumsqrt
 			}
-
+	
+	
 			weight_sum -= sum;
 			sum -= input[i-period+1];
+	
 			weight_sum2 -= sum2;
 			sum2 -= input[i-period2+1];
 		}
@@ -5730,4 +5700,23 @@ export class Indicators {
 
 		return output
 	}
+}
+
+import { Mock } from "../mock/ohlcv"
+
+let {
+	smallClose: close,
+	smallHigh: high,
+	smallLow: low,
+	smallOpen: open,
+	smallVolume: volume,
+} = new Mock()
+
+Run()
+async function Run() {
+	let ta = new Indicators()
+
+	let a = await ta.hma(close, 20)
+
+	console.log(a)
 }
