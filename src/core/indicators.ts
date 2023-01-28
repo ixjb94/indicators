@@ -4409,25 +4409,33 @@ export class Indicators {
 	}
 
 	/**
-	 * @ChatGPT
-	 * @param data 
+	 * 
+	 * @param input 
 	 * @param period 
+	 * @param size 
 	 * @returns 
 	 */
-	async zlema(data: number[], period: number): Promise<number[]> {
+	async zlema(input: number[], period: number, size: number = input.length): Promise<number[]> {
 		
-		let alpha = 2 / (period + 1)
-		let a = 1 - alpha
-		let ema = data[0]
-		let zlema = new Array(data.length)
-		zlema[0] = ema
-
-		for (let i = 1; i < data.length; i++) {
-			ema = alpha * data[i] + (1 - alpha) * ema
-			zlema[i] = alpha * ema + (a * zlema[i - 1])
+		const lag = Math.floor((period - 1) / 2)
+	
+		let output: number[] = []
+	
+		const per = 2 / (period + 1)
+	
+		let val = input[lag-1]
+		output.push(val)
+	
+		let i;
+		for (i = lag; i < size; ++i) {
+			let c = input[i];
+			let l = input[i-lag];
+	
+			val = ((c + (c-l))-val) * per + val;
+			output.push(val)
 		}
 
-		return zlema
+		return output
 	}
 	// ################## Beta
 
@@ -5716,7 +5724,7 @@ Run()
 async function Run() {
 	let ta = new Indicators()
 
-	let a = await ta.hma(close, 20)
+	let a = await ta.zlema(close, 20)
 
 	console.log(a)
 }
