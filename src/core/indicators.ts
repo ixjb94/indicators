@@ -5709,22 +5709,3 @@ export class Indicators {
 		return output
 	}
 }
-
-import { Mock } from "../mock/ohlcv"
-
-let {
-	smallClose: close,
-	smallHigh: high,
-	smallLow: low,
-	smallOpen: open,
-	smallVolume: volume,
-} = new Mock()
-
-Run()
-async function Run() {
-	let ta = new Indicators()
-
-	let a = await ta.zlema(close, 20)
-
-	console.log(a)
-}
