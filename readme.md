@@ -92,7 +92,7 @@ node-talib, tulipnode, technicalindicators, pandas_ta
 | emv             | Ease of Movement                      | ✅                  |
 | fisher          | Fisher Transform                      | ✅                  |
 | fosc            | Forecast Oscillator                   | ✅                  |
-| hma             | Hull Moving Average                   | ❌🔄                |
+| hma             | Hull Moving Average                   | ✅                  |
 | kama            | Kaufman Adaptive Moving Average       | ✅                  |
 | kvo             | Klinger Volume Oscillator             | ✅                  |
 | lag             | Lag                                   | ✅                  |
@@ -142,7 +142,7 @@ node-talib, tulipnode, technicalindicators, pandas_ta
 | wilders         | Wilders Smoothing                     | ✅                  |
 | willr           | Williams %R                           | ✅                  |
 | wma             | Weighted Moving Average               | ✅                  |
-| zlema           | Zero-Lag Exponential Moving Average   | ❌🔄                |
+| zlema           | Zero-Lag Exponential Moving Average   | ✅                  |
 | abands          |                                       | ✅                  |
 | alma            | Arnaud Legoux Moving Average          | ✅                  |
 | ce              | Chandelier Exit                       | ✅                  |
