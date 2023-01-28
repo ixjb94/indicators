@@ -148,7 +148,7 @@ node-talib, tulipnode, technicalindicators, pandas_ta
 | ce              | Chandelier Exit                       | ✅                  |
 | cmf             | Chaikin money flow                    | ✅                  |
 | copp            | Coppock Curve                         | ❌                  |
-| dc              | Donchian Channels                     | ❌🔄                |
+| dc              | Donchian Channels                     | ❌🔄               |
 | fi              | Force index                           | ✅                  |
 | ikhts           |                                       | ❌                  |
 | kc              | Keltner Channels                      | ✅                  |
