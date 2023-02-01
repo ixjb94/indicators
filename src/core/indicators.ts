@@ -4834,9 +4834,30 @@ export class Indicators {
 	 * @param highs 
 	 * @param lows 
 	 * @param period 
+	 */
+	async dc(highs: number[], lows: number[], period: number): Promise<[number[], number[], number[]]> {
+		
+		let upper: number[] = []
+		let lower: number[] = []
+		let middle: number[] = []
+	
+		for (let i = period - 1; i < highs.length; i++) {
+			upper.push(Math.max(...highs.slice(i - period + 1, i + 1)))
+			lower.push(Math.min(...lows.slice(i - period + 1, i + 1)))
+			middle.push((upper[upper.length - 1] + lower[lower.length - 1]) / 2)
+		}
+	
+		return [upper, middle, lower]
+	}
+
+	/**
+	 * @ChatGPT
+	 * @param highs 
+	 * @param lows 
+	 * @param period 
 	 * @returns [Upper, Middle, Lower] 
 	 */
-	async dc(highs: number[], lows: number[], period: number): Promise<Array<Array<number>>> {
+	async _dc(highs: number[], lows: number[], period: number): Promise<Array<Array<number>>> {
 
 		let upper = -Infinity
 		let lower = Infinity

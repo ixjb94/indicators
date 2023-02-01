@@ -1,31 +1,36 @@
 {
-  "name": "@ixjb94/indicators",
-  "version": "1.0.19",
-  "description": "Fastest Technical Indicators written in typescript. More than +100 indicators(SMA, EMA, RSI, MACD, ...)",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "scripts": {
-    "build": "tsc",
-    "dist": "node ./dist/index.js",
-    "dev": "npm run build && npm run dist"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ixjb94/indicators.git"
-  },
-  "keywords": [
-    "indicators",
-    "ema",
-    "sma",
-    "rsi",
-    "cci",
-    "technical indicators",
-    "chart",
-    "trade"
-  ],
-  "author": "IX JB",
-  "license": "MIT",
-  "devDependencies": {
-    "@types/node": "^18.11.11"
-  }
+	"name": "@ixjb94/indicators",
+	"version": "1.0.19",
+	"description": "Fastest Technical Indicators written in typescript. More than +100 indicators(SMA, EMA, RSI, MACD, ...)",
+	"main": "./dist/bundle.js",
+	"types": "./dist/index.d.ts",
+	"scripts": {
+		"build": "npm run ts && npm run webpack",
+		"dev": "npm run build && npm run dist",
+		"ts": "tsc",
+		"dist": "node ./dist/index.js",
+		"webpack": "webpack"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ixjb94/indicators.git"
+	},
+	"keywords": [
+		"indicators",
+		"ema",
+		"sma",
+		"rsi",
+		"cci",
+		"technical indicators",
+		"chart",
+		"trade"
+	],
+	"author": "IX JB",
+	"license": "MIT",
+	"devDependencies": {
+		"@types/node": "^18.11.11",
+		"ts-loader": "^9.4.2",
+		"webpack": "^5.75.0",
+		"webpack-cli": "^5.0.1"
+	}
 }
