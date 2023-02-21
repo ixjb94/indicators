@@ -7,6 +7,9 @@
 
 ![logo](https://raw.githubusercontent.com/ixjb94/indicators/master/images/bar-graph.png "logo")
 
+### Supports
+Browser, ES6, CommonJS
+
 ### About
 Fastest Technical Indicators written in typescript    
 This project is transpiled version of TulipCharts/tulipindicators (C version)    
