@@ -10,9 +10,10 @@
 		"src"
 	],
 	"scripts": {
+		"webpack": "npx webpack",
+		"pub": "tsc && webpack && npm version patch && npm publish && git push origin master",
 		"dev": "npm run build && npm run dist",
-		"ts": "tsc",
-		"pub": "tsc && npm version patch && npm publish && git push origin master"
+		"ts": "tsc"
 	},
 	"repository": {
 		"type": "git",
