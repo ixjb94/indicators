@@ -5,11 +5,9 @@
 	"main": "./dist/bundle.js",
 	"types": "./dist/index.d.ts",
 	"scripts": {
-		"build": "npm run ts && npm run webpack",
 		"dev": "npm run build && npm run dist",
 		"ts": "tsc",
-		"dist": "node ./dist/index.js",
-		"webpack": "webpack"
+		"pub": "tsc && npm version patch && npm publish && git push origin master"
 	},
 	"repository": {
 		"type": "git",
