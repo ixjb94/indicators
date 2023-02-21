@@ -24,13 +24,57 @@ Benchmark cases: @ixjb94/indicators, node-talib, tulipnode, technicalindicators,
 npm install @ixjb94/indicators
 ```
 
-### Usage
+### Usage NodeJS
 ```js
 import { Indicators } from "@ixjb94/indicators"
 
 // OR
 const { Indicators } = require("@ixjb94/indicators")
 ```
+
+### Usage Browser
+index.html example:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>My Indicators</title>
+</head>
+<body>
+	<script src="./node_modules/@ixjb94/indicators/dist/indicators-browser.js"></script>
+	<script>
+		const library = indicators
+		const ta = new library.Indicators()
+		const {close, open} = new library.Mock()
+
+		ta.ema(close, 20).then(data => console.log(data))
+	</script>
+</body>
+</html>
+
+Note: you can move files from node_modules to something else you want like dist, public, etc.
+```
+
+### Indicators Contains
+Indicators contains this classes: 
+1- Indicators: `new Indicators()`    
+2- IndicatorsNormalized: `new IndicatorsNormalized()`    
+3- Mock: `new Mock()`     
+
+Q: What is the difference between `Indicators` and `IndicatorsNormalized`?
+A: `IndicatorsNormalized` will fill the gap for you, example (SMA 3 with 5 closes):
+```
+[NaN, NaN, 1, 2, 3]
+```
+
+But the `Indicators` will give you the SMA3 with 5 closes like this:    
+```
+[1, 2, 3]
+```
+
+Note: Please note that the performance between `IndicatorsNormalized` and `Indicators` are the same,    
+so it's better to use `IndicatorsNormalized`.
 
 ### Examples
 **Note: Everything is`Promised`  so you need to do  `.then`  or  `await`**
@@ -53,8 +97,9 @@ let {
 } = new Mock()
 ```
 
-### Types & Intellisense
+### Types & Intellisense & Browser Support
 ![types](https://raw.githubusercontent.com/ixjb94/indicators/master/images/types-intel.png "types")
+![browser](https://raw.githubusercontent.com/ixjb94/indicators/master/images/browser-support.png "browser-support")
 
 
 ### Indicators
