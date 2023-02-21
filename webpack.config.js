@@ -2,9 +2,9 @@ module.exports = {
     mode: "development",
     entry: "./src/index.ts",
     output: {
-        filename: "my-library.js",
+        filename: "indicators-browser.js",
         path: __dirname + "/dist",
-        library: "MyLibrary",
+        library: "indicators",
         libraryTarget: "umd",
     },
     resolve: {
