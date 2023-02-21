@@ -53,16 +53,16 @@ index.html example:
 </body>
 </html>
 
-Note: you can move files from node_modules to something else you want like dist, public, etc.
 ```
+Note: you can move files from node_modules to something else you want like dist, public, etc.
 
 ### Indicators Contains
-Indicators contains this classes: 
+Indicators contains this classes:    
 1- Indicators: `new Indicators()`    
 2- IndicatorsNormalized: `new IndicatorsNormalized()`    
 3- Mock: `new Mock()`     
 
-Q: What is the difference between `Indicators` and `IndicatorsNormalized`?
+Q: What is the difference between `Indicators` and `IndicatorsNormalized`?    
 A: `IndicatorsNormalized` will fill the gap for you, example (SMA 3 with 5 closes):
 ```
 [NaN, NaN, 1, 2, 3]
