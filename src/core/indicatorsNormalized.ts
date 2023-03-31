@@ -14,14 +14,14 @@ export class IndicatorsNormalized {
 	 * @returns 
 	 */
 	async normalize(originalLength: number, source: Array<number> | string, empty: any = NaN): Promise<Array<number>> {
-		let diff = originalLength - source.length
+		const diff = originalLength - source.length
 
-		let emptyList: Array<any> = []
+		const emptyList: Array<any> = []
 		for (let index = 0; index < diff; ++index) {
 			emptyList.push(empty)
 		}
 
-		let result = [...emptyList, ...source]
+		const result = [...emptyList, ...source]
 
 		return result
 	}
@@ -275,7 +275,7 @@ export class IndicatorsNormalized {
 		adx += dx
 
 		// Start ti_buffer_new
-		let adxr: BufferNewQPush = {
+		const adxr: BufferNewQPush = {
 			size: period - 1,
 			pushes: 0,
 			index: 0,
@@ -372,11 +372,11 @@ export class IndicatorsNormalized {
 
 		let sum34 = 0
 		let sum5 = 0
-		let per34 = 1.0 / 34.0
-		let per5 = 1.0 / 5.0
+		const per34 = 1.0 / 34.0
+		const per5 = 1.0 / 5.0
 
 		for (let index = 0; index < 34; ++index) {
-			let hl = 0.5 * (high[index] + low[index])
+			const hl = 0.5 * (high[index] + low[index])
 
 			sum34 += hl
 
@@ -389,7 +389,7 @@ export class IndicatorsNormalized {
 		output.push(per5 * sum5 - per34 * sum34)
 
 		for (let index = period; index < size; ++index) {
-			let hl = 0.5 * (high[index] + low[index])
+			const hl = 0.5 * (high[index] + low[index])
 
 			sum34 += hl
 			sum5 += hl
@@ -739,7 +739,7 @@ export class IndicatorsNormalized {
 
 		let sd = Math.sqrt(sum2 * scale - (sum * scale) * (sum * scale))
 
-		let calc_middle = sum * scale
+		const calc_middle = sum * scale
 		lower.push(calc_middle - stddev * sd)
 		upper.push(calc_middle + stddev * sd)
 		middle.push(calc_middle)
@@ -753,7 +753,7 @@ export class IndicatorsNormalized {
 
 			sd = Math.sqrt(sum2 * scale - (sum * scale) * (sum * scale))
 
-			let calc_middle = sum * scale
+			const calc_middle = sum * scale
 			upper.push(calc_middle + stddev * sd)
 			lower.push(calc_middle - stddev * sd)
 			middle.push(calc_middle)
@@ -905,7 +905,7 @@ export class IndicatorsNormalized {
 	 * @param size 
 	 * @returns 
 	 */
-	async crossany(a: any, b: any, size: number = a.length) {
+	async crossany(a: number[], b: number[], size: number = a.length) {
 
 		const output: boolean[] = []
 
@@ -934,7 +934,7 @@ export class IndicatorsNormalized {
 	 * @param size 
 	 * @returns 
 	 */
-	async crossover(a: any, b: any, size: number = a.length) {
+	async crossover(a: number[], b: number[], size: number = a.length) {
 
 		const output: boolean[] = []
 
@@ -2005,9 +2005,6 @@ export class IndicatorsNormalized {
 
 		let y = 0
 		let xy = 0
-		// Start INIT()
-		let p: number
-		// End INIT()
 		for (let i = 0; i < (period) - 1; ++i) {
 			x += i + 1
 			x2 += (i + 1) * (i + 1)
@@ -2141,10 +2138,6 @@ export class IndicatorsNormalized {
 		const output: number[] = []
 		output[(16 + period - 2)] = NaN
 
-		// mass_start
-		let sum_p: number = period - 1
-		// mass_start
-
 		// if (period < 1) return "Invalid Options"
 		// if (size <= 16 + sum_p) return "Out of range"
 
@@ -2155,7 +2148,7 @@ export class IndicatorsNormalized {
 
 		let ema2 = ema
 
-		let sum: BufferNewPush = {
+		const sum: BufferNewPush = {
 			index: 0,
 			pushes: 0,
 			size: period,
@@ -2360,7 +2353,7 @@ export class IndicatorsNormalized {
 		for (let i = 1; i < size; ++i) {
 
 			// Start TYPPRICE()
-			let typ = ((high[(i)] + low[(i)] + close[(i)]) * (1.0 / 3.0))
+			const typ = ((high[(i)] + low[(i)] + close[(i)]) * (1.0 / 3.0))
 			// End TYPPRICE()
 
 			const bar = typ * volume[i]
@@ -3540,7 +3533,7 @@ export class IndicatorsNormalized {
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
 
-		let weights = 1 / ((period % 2) ?
+		const weights = 1 / ((period % 2) ?
 			((period / 2 + 1) * (period / 2 + 1)) :
 			((period / 2 + 1) * (period / 2)))
 
@@ -4024,8 +4017,8 @@ export class IndicatorsNormalized {
 		output.push(val)
 
 		if (long_period - 1 < size) {
-			let short_stddev = Math.sqrt(short_sum2 * short_div - (short_sum * short_div) * (short_sum * short_div))
-			let long_stddev = Math.sqrt(long_sum2 * long_div - (long_sum * long_div) * (long_sum * long_div))
+			const short_stddev = Math.sqrt(short_sum2 * short_div - (short_sum * short_div) * (short_sum * short_div))
+			const long_stddev = Math.sqrt(long_sum2 * long_div - (long_sum * long_div) * (long_sum * long_div))
 			let k = short_stddev / long_stddev
 			if (k != k) k = 0; /* In some conditions it works out that we take the sqrt(-0.0), which gives NaN.
                                   That implies that k should be zero. */
@@ -4047,8 +4040,8 @@ export class IndicatorsNormalized {
 			short_sum -= source[i - short_period]
 			short_sum2 -= source[i - short_period] * source[i - short_period]
 
-			let short_stddev = Math.sqrt(short_sum2 * short_div - (short_sum * short_div) * (short_sum * short_div))
-			let long_stddev = Math.sqrt(long_sum2 * long_div - (long_sum * long_div) * (long_sum * long_div))
+			const short_stddev = Math.sqrt(short_sum2 * short_div - (short_sum * short_div) * (short_sum * short_div))
+			const long_stddev = Math.sqrt(long_sum2 * long_div - (long_sum * long_div) * (long_sum * long_div))
 			let k = short_stddev / long_stddev
 			if (k != k) k = 0
 			k *= alpha
@@ -4483,9 +4476,9 @@ export class IndicatorsNormalized {
 		size: number = high.length
 	) {
 
-		let upper_band: number[] = []
-		let lower_band: number[] = []
-		let middle_point: number[] = []
+		const upper_band: number[] = []
+		const lower_band: number[] = []
+		const middle_point: number[] = []
 
 		upper_band[period - 2] = NaN
 		lower_band[period - 2] = NaN
@@ -4516,10 +4509,10 @@ export class IndicatorsNormalized {
 		for (let i = 0; i < period; ++i) {
 			// Start MULT
 			// MULT(i) (4. * (high[i] - low[i]) / (high[i] + low[i]))
-			let mult = (4. * (high[i] - low[i]) / (high[i] + low[i]))
+			const mult = (4. * (high[i] - low[i]) / (high[i] + low[i]))
 			// End MULT
 
-			let high_val = (1. + mult) * high[i]
+			const high_val = (1. + mult) * high[i]
 
 			// Start ti_buffer_push
 			// BUFFER = buffer_high
@@ -4536,7 +4529,7 @@ export class IndicatorsNormalized {
 			if (buffer_high.index >= buffer_high.size) buffer_high.index = 0
 			// End ti_buffer_push
 
-			let low_val = (1. - mult) * low[i]
+			const low_val = (1. - mult) * low[i]
 
 			// Start ti_buffer_push
 			// BUFFER = buffer_low
@@ -4562,10 +4555,10 @@ export class IndicatorsNormalized {
 
 		for (let i = period; i < size; ++i) {
 			// Start MULT
-			let mult = (4. * (high[i] - low[i]) / (high[i] + low[i]))
+			const mult = (4. * (high[i] - low[i]) / (high[i] + low[i]))
 			// End MULT
 
-			let high_val = (1. + mult) * high[i]
+			const high_val = (1. + mult) * high[i]
 			// Start ti_buffer_push
 			// BUFFER = buffer_high
 			// VAL    = high_val
@@ -4581,7 +4574,7 @@ export class IndicatorsNormalized {
 			if (buffer_high.index >= buffer_high.size) buffer_high.index = 0
 			// End ti_buffer_push
 
-			let low_val = (1. - mult) * low[i]
+			const low_val = (1. - mult) * low[i]
 
 			// Start ti_buffer_push
 			// BUFFER = buffer_low
@@ -4724,8 +4717,8 @@ export class IndicatorsNormalized {
 
 		atr /= period
 
-		const smth = (period - 1.) / period
-		const per = 1. / period
+		const smth = (period - 1) / period
+		const per = 1 / period
 
 		ce_high.push(HP - coef * atr)
 		ce_low.push(LP + coef * atr)
@@ -4846,9 +4839,9 @@ export class IndicatorsNormalized {
 	 */
 	async copp(data: number[], period1: number, period2: number) {
 
-		let roc1 = new Array(data.length);
-		let roc2 = new Array(data.length);
-		let coppock = new Array(data.length);
+		const roc1 = new Array(data.length);
+		const roc2 = new Array(data.length);
+		const coppock = new Array(data.length);
 
 		for (let i = 0; i < data.length; i++) {
 			if (i < period1 - 1) {
@@ -5029,15 +5022,15 @@ export class IndicatorsNormalized {
 		if (max_ma < ma4) max_ma = ma4
 		// End MAX4
 
-		let per1 = 2. / (ma1 + 1)
-		let per2 = 2. / (ma2 + 1)
-		let per3 = 2. / (ma3 + 1)
+		let per1 = 2 / (ma1 + 1)
+		let per2 = 2 / (ma2 + 1)
+		let per3 = 2 / (ma3 + 1)
 		let per4 = 2. / (ma4 + 1)
 		let per_signal = 2. / (9. + 1.)
 
 		// #define ROC(idx, period) ((real[idx] - real[idx-period]) / real[idx-period])
 
-		function ROC(idx: any, period: any) {
+		function ROC(idx: number, period: number) {
 			return ((source[idx] - source[idx - period]) / source[idx - period])
 		}
 
@@ -5059,7 +5052,7 @@ export class IndicatorsNormalized {
 			_4 = (ROC(i, roc4) - _4) * per4 + _4
 		}
 
-		let val = (_1 * 1. + _2 * 2. + _3 * 3. + _4 * 4.) / 10.
+		let val = (_1 * 1 + _2 * 2 + _3 * 3 + _4 * 4) / 10
 		kst_signal.push(val)
 
 		let _signal = val
@@ -5071,7 +5064,7 @@ export class IndicatorsNormalized {
 			_3 = (ROC(i, roc3) - _3) * per3 + _3
 			_4 = (ROC(i, roc4) - _4) * per4 + _4
 
-			val = (_1 * 1. + _2 * 2. + _3 * 3. + _4 * 4.) / 10.
+			val = (_1 * 1 + _2 * 2 + _3 * 3 + _4 * 4) / 10
 			kst.push(val)
 
 			_signal = (val - _signal) * per_signal + _signal
@@ -5110,11 +5103,11 @@ export class IndicatorsNormalized {
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
 
-		let y_sum = 0.
-		let xy_sum = 0.
+		let y_sum = 0
+		let xy_sum = 0
 
-		const x_sum = period * (period + 1) / 2.
-		const xsq_sum = period * (period + 1) * (2 * period + 1) / 6.
+		const x_sum = period * (period + 1) / 2
+		const xsq_sum = period * (period + 1) * (2 * period + 1) / 6
 
 		let i: number
 		for (i = 0; i < period; ++i) {
@@ -5124,7 +5117,7 @@ export class IndicatorsNormalized {
 
 		--i
 
-		let b = (xy_sum / period - x_sum / period * y_sum / period) / (xsq_sum / period - (x_sum / period) * (x_sum / period))
+		const b = (xy_sum / period - x_sum / period * y_sum / period) / (xsq_sum / period - (x_sum / period) * (x_sum / period))
 
 		let the_max = high[i]
 
@@ -5150,7 +5143,7 @@ export class IndicatorsNormalized {
 			xy_sum += -y_sum + close[i] * period;
 			y_sum += -close[i - period] + close[i]
 
-			let b = (xy_sum / period - x_sum / period * y_sum / period) / (xsq_sum / period - (x_sum / period) * (x_sum / period));
+			const b = (xy_sum / period - x_sum / period * y_sum / period) / (xsq_sum / period - (x_sum / period) * (x_sum / period));
 
 			let the_max = high[i]
 			for (let j = 1; j < period; ++j) {
@@ -5201,7 +5194,7 @@ export class IndicatorsNormalized {
 		// #define EMA_NEXT(val) (((val) - ema) * per + ema)
 
 
-		const per = 2. / (ema_period + 1.)
+		const per = 2 / (ema_period + 1)
 
 		const denom: BufferNewPush = {
 			size: period,
@@ -5221,8 +5214,8 @@ export class IndicatorsNormalized {
 				denom.sum -= denom.vals[denom.index]
 			}
 
-			denom.sum += Math.sqrt(Math.pow(source[i] - source[i - 1], 2) + 1.)
-			denom.vals[denom.index] = Math.sqrt(Math.pow(source[i] - source[i - 1], 2) + 1.)
+			denom.sum += Math.sqrt(Math.pow(source[i] - source[i - 1], 2) + 1)
+			denom.vals[denom.index] = Math.sqrt(Math.pow(source[i] - source[i - 1], 2) + 1)
 			denom.pushes += 1
 			denom.index = (denom.index + 1)
 			if (denom.index >= denom.size) denom.index = 0
@@ -5237,8 +5230,8 @@ export class IndicatorsNormalized {
 			denom.sum -= denom.vals[denom.index]
 		}
 
-		denom.sum += Math.sqrt(Math.pow(source[i] - source[i - 1], 2) + 1.)
-		denom.vals[denom.index] = Math.sqrt(Math.pow(source[i] - source[i - 1], 2) + 1.)
+		denom.sum += Math.sqrt(Math.pow(source[i] - source[i - 1], 2) + 1)
+		denom.vals[denom.index] = Math.sqrt(Math.pow(source[i] - source[i - 1], 2) + 1)
 		denom.pushes += 1
 		denom.index = (denom.index + 1)
 		if (denom.index >= denom.size) denom.index = 0
@@ -5246,7 +5239,7 @@ export class IndicatorsNormalized {
 
 		// Start SIGN
 		// let numer = SIGN(source[i] - source[i-period]) * 100. * Math.sqrt(Math.pow(source[i] - source[i-period], 2) + 100.)
-		let numer = ((source[i] - source[i - period]) > 0 ? 1. : -1.) * 100. * Math.sqrt(Math.pow(source[i] - source[i - period], 2) + 100.)
+		const numer = ((source[i] - source[i - period]) > 0 ? 1 : -1) * 100 * Math.sqrt(Math.pow(source[i] - source[i - period], 2) + 100)
 		// End SIGN
 
 		let ema = numer / denom.sum
@@ -5261,8 +5254,8 @@ export class IndicatorsNormalized {
 				denom.sum -= denom.vals[denom.index]
 			}
 
-			denom.sum += Math.sqrt(Math.pow(source[i] - source[i - 1], 2) + 1.)
-			denom.vals[denom.index] = Math.sqrt(Math.pow(source[i] - source[i - 1], 2) + 1.)
+			denom.sum += Math.sqrt(Math.pow(source[i] - source[i - 1], 2) + 1)
+			denom.vals[denom.index] = Math.sqrt(Math.pow(source[i] - source[i - 1], 2) + 1)
 			denom.pushes += 1
 			denom.index = (denom.index + 1)
 			if (denom.index >= denom.size) denom.index = 0
@@ -5270,7 +5263,7 @@ export class IndicatorsNormalized {
 
 			// Start SIGN
 			// let numer2 = SIGN(real[i] - real[i-(int)period]) * 100. * sqrt(pow(real[i] - real[i-(int)period], 2) + 100.)
-			let numer2 = ((source[i] - source[i - period]) > 0 ? 1. : -1.) * 100. * Math.sqrt(Math.pow(source[i] - source[i - period], 2) + 100.)
+			const numer2 = ((source[i] - source[i - period]) > 0 ? 1 : -1) * 100 * Math.sqrt(Math.pow(source[i] - source[i - period], 2) + 100)
 			// End SIGN
 
 			// Start EMA_NEXT
@@ -5307,8 +5300,8 @@ export class IndicatorsNormalized {
 		// if (ema_period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
 
-		let y_sum = 0.
-		let xy_sum = 0.
+		let y_sum = 0
+		let xy_sum = 0
 		let ema: number
 
 		const x_sum = period * (period + 1) / 2.
@@ -5337,7 +5330,7 @@ export class IndicatorsNormalized {
 			}
 		}
 
-		ema = (close[i] - the_min) / (the_max - the_min) * 100.
+		ema = (close[i] - the_min) / (the_max - the_min) * 100
 		output.push(ema)
 
 		++i
@@ -5362,8 +5355,8 @@ export class IndicatorsNormalized {
 				}
 			}
 
-			let osc = (close[i] - the_min) / (the_max - the_min) * 100.
-			ema = (osc - ema) * 2. / (1 + ema_period) + ema
+			const osc = (close[i] - the_min) / (the_max - the_min) * 100
+			ema = (osc - ema) * 2 / (1 + ema_period) + ema
 			output.push(ema)
 		}
 
@@ -5398,12 +5391,12 @@ export class IndicatorsNormalized {
 		losses_ema = ((0) > (source[i - lookback_period] - source[i]) ? (0) : (source[i - lookback_period] - source[i]))
 		++i
 
-		output.push(gains_ema / (gains_ema + losses_ema) * 100.)
+		output.push(gains_ema / (gains_ema + losses_ema) * 100)
 
 		for (; i < size; ++i) {
 			gains_ema = ((0) > (source[i] - source[i - lookback_period]) ? (0) : (source[i] - source[i - lookback_period]) - gains_ema) * 2. / (1 + period) + gains_ema
 			losses_ema = ((0) > (source[i - lookback_period] - source[i]) ? (0) : (source[i - lookback_period] - source[i]) - losses_ema) * 2. / (1 + period) + losses_ema
-			output.push(gains_ema / (gains_ema + losses_ema) * 100.)
+			output.push(gains_ema / (gains_ema + losses_ema) * 100)
 		}
 
 		return output
@@ -5428,18 +5421,18 @@ export class IndicatorsNormalized {
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
 
-		const alpha = 1. - beta
-		let b = (1. - alpha) * source[0] + source[0]
-		let rmta = (1. - alpha) * source[0] + alpha * (source[0] + b)
+		const alpha = 1 - beta
+		let b = (1 - alpha) * source[0] + source[0]
+		let rmta = (1 - alpha) * source[0] + alpha * (source[0] + b)
 
 		for (let i = 1; i < period - 1; ++i) {
-			let next_b = (1. - alpha) * b + source[i]
-			rmta = (1. - alpha) * rmta + alpha * (source[i] + next_b - b)
+			let next_b = (1 - alpha) * b + source[i]
+			rmta = (1 - alpha) * rmta + alpha * (source[i] + next_b - b)
 			b = next_b
 		}
 
 		for (let i = period - 1; i < size; ++i) {
-			let next_b = (1. - alpha) * b + source[i]
+			let next_b = (1 - alpha) * b + source[i]
 			rmta = (1. - alpha) * rmta + alpha * (source[i] + next_b - b)
 			b = next_b
 			output.push(rmta)
@@ -5468,14 +5461,14 @@ export class IndicatorsNormalized {
 		// if (stddev_period < 1) return "Invalid Options"
 		// if (size <= stddev_period-1) return "Out of range"
 
-		let y_sum = 0.
-		let xy_sum = 0.
+		let y_sum = 0
+		let xy_sum = 0
 
-		const x_sum = stddev_period * (stddev_period + 1) / 2.
-		const xsq_sum = stddev_period * (stddev_period + 1) * (2 * stddev_period + 1) / 6.
+		const x_sum = stddev_period * (stddev_period + 1) / 2
+		const xsq_sum = stddev_period * (stddev_period + 1) * (2 * stddev_period + 1) / 6
 
-		let gains_ema = 0.
-		let losses_ema = 0.
+		let gains_ema = 0
+		let losses_ema = 0
 
 		let i = 0
 		for (; i < stddev_period; ++i) {
@@ -5495,9 +5488,9 @@ export class IndicatorsNormalized {
 		}
 
 		if (gains_ema + losses_ema == 0) {
-			output.push(50.)
+			output.push(50)
 		} else {
-			output.push(gains_ema / (gains_ema + losses_ema) * 100.)
+			output.push(gains_ema / (gains_ema + losses_ema) * 100)
 		}
 		++i
 
@@ -5517,9 +5510,9 @@ export class IndicatorsNormalized {
 			}
 
 			if (gains_ema + losses_ema == 0) {
-				output.push(50.)
+				output.push(50)
 			} else {
-				output.push(gains_ema / (gains_ema + losses_ema) * 100.)
+				output.push(gains_ema / (gains_ema + losses_ema) * 100)
 			}
 		}
 
@@ -5634,13 +5627,13 @@ export class IndicatorsNormalized {
 				ll_idx = progress
 			}
 
-			ema_r_num = ((close[i] - 0.5 * (hh + ll)) - ema_r_num) * (2. / (1. + r_period)) + ema_r_num
-			ema_s_num = (ema_r_num - ema_s_num) * (2. / (1. + s_period)) + ema_s_num
+			ema_r_num = ((close[i] - 0.5 * (hh + ll)) - ema_r_num) * (2 / (1 + r_period)) + ema_r_num
+			ema_s_num = (ema_r_num - ema_s_num) * (2 / (1 + s_period)) + ema_s_num
 
-			ema_r_den = ((hh - ll) - ema_r_den) * (2. / (1. + r_period)) + ema_r_den
-			ema_s_den = (ema_r_den - ema_s_den) * (2. / (1. + s_period)) + ema_s_den
+			ema_r_den = ((hh - ll) - ema_r_den) * (2 / (1 + r_period)) + ema_r_den
+			ema_s_den = (ema_r_den - ema_s_den) * (2 / (1 + s_period)) + ema_s_den
 
-			output.push(100. * ema_s_num / (0.5 * ema_s_den))
+			output.push(100 * ema_s_num / (0.5 * ema_s_den))
 		}
 
 		return output
@@ -5683,20 +5676,20 @@ export class IndicatorsNormalized {
 			z_ema_num = y_ema_num = source[i] - price
 			z_ema_den = y_ema_den = Math.abs(source[i] - price)
 
-			output.push(100. * (z_ema_den ? z_ema_num / z_ema_den : 0))
+			output.push(100 * (z_ema_den ? z_ema_num / z_ema_den : 0))
 
 			price = source[i]
 		}
 
 		for (; i < size; ++i, ++progress) {
 			y_ema_num = ((source[i] - price) - y_ema_num) * 2. / (1. + y_period) + y_ema_num
-			y_ema_den = ((Math.abs(source[i] - price)) - y_ema_den) * 2. / (1. + y_period) + y_ema_den
+			y_ema_den = ((Math.abs(source[i] - price)) - y_ema_den) * 2 / (1 + y_period) + y_ema_den
 
-			z_ema_num = (y_ema_num - z_ema_num) * 2. / (1. + z_period) + z_ema_num
-			z_ema_den = (y_ema_den - z_ema_den) * 2. / (1. + z_period) + z_ema_den
+			z_ema_num = (y_ema_num - z_ema_num) * 2 / (1 + z_period) + z_ema_num
+			z_ema_den = (y_ema_den - z_ema_den) * 2 / (1 + z_period) + z_ema_den
 
 
-			output.push(100. * (z_ema_den ? z_ema_num / z_ema_den : 0))
+			output.push(100 * (z_ema_den ? z_ema_num / z_ema_den : 0))
 
 			price = source[i]
 		}
@@ -5732,7 +5725,7 @@ export class IndicatorsNormalized {
 
 		let i = 0
 		for (; i < size && progress < 1; ++i, ++progress) {
-			num += (high[i] + low[i] + close[i]) / 3. * volume[i]
+			num += (high[i] + low[i] + close[i]) / 3 * volume[i]
 			den += volume[i]
 		}
 
@@ -5741,7 +5734,7 @@ export class IndicatorsNormalized {
 		}
 
 		for (; i < size; ++i, ++progress) {
-			num += (high[i] + low[i] + close[i]) / 3. * volume[i]
+			num += (high[i] + low[i] + close[i]) / 3 * volume[i]
 				- (high[i - period] + low[i - period] + close[i - period]) / 3. * volume[i - period]
 			den += volume[i] - volume[i - period]
 
