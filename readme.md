@@ -1,4 +1,4 @@
-<!-- [![CodeFactor](https://www.codefactor.io/repository/github/ixjb94/indicators/badge)](https://www.codefactor.io/repository/github/ixjb94/indicators) -->
+[![CodeFactor](https://www.codefactor.io/repository/github/ixjb94/indicators/badge)](https://www.codefactor.io/repository/github/ixjb94/indicators)
 ![npm version](https://img.shields.io/npm/v/@ixjb94/indicators)
 ![npm size](https://img.shields.io/bundlephobia/min/@ixjb94/indicators/latest)
 ![npm downloads](https://img.shields.io/npm/dt/@ixjb94/indicators)
