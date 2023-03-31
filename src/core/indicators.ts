@@ -272,7 +272,7 @@ export class Indicators {
 		adx += dx
 
 		// Start ti_buffer_new
-		let adxr: BufferNewQPush = {
+		const adxr: BufferNewQPush = {
 			size: period - 1,
 			pushes: 0,
 			index: 0,
@@ -329,10 +329,10 @@ export class Indicators {
 					// BUFFER = adxr
 					// VAL    = 1
 					// ((BUFFER)->vals[((BUFFER)->index + (BUFFER)->size - 1 + (VAL)) % (BUFFER)->size])
-					let a = adxr.vals[adxr.index]
-					let b = (adxr.size - 1) + 1 // + 1 = VAL
-					let c = adxr.size
-					let buffer_get = a + b % c
+					const a = adxr.vals[adxr.index]
+					const b = (adxr.size - 1) + 1 // + 1 = VAL
+					const c = adxr.size
+					const buffer_get = a + b % c
 					// ## End ti_buffer_get
 					output.push((0.5 * (adx * invper + buffer_get)))
 				}
@@ -1058,7 +1058,7 @@ export class Indicators {
 		output.push(source[0])
 
 		for (let i = 1; i < size; ++i) {
-			let d = output[output.length - 1] - scale
+			const d = output[output.length - 1] - scale
 			output.push(source[i] > d ? source[i] : d)
 		}
 
@@ -1138,7 +1138,7 @@ export class Indicators {
 
 		for (let i = 1; i < period; ++i) {
 
-			let truerange
+			// let truerange
 			// Start CALC_TRUERANGE()
 			const l = low[i]
 			const h = high[i]
@@ -1148,7 +1148,7 @@ export class Indicators {
 			let v = h - l
 			if (ych > v) v = ych
 			if (ycl > v) v = ycl
-			truerange = v
+			const truerange = v
 			// End CALC_TRUERANGE()
 			atr += truerange
 
@@ -1178,7 +1178,7 @@ export class Indicators {
 		minus_di.push(100.0 * dmdown / atr)
 
 		for (let i = period; i < size; ++i) {
-			let truerange
+			// let truerange
 			// Start CALC_TRUERANGE()
 			const l = low[i]
 			const h = high[i]
@@ -1188,7 +1188,7 @@ export class Indicators {
 			let v = h - l
 			if (ych > v) v = ych
 			if (ycl > v) v = ycl
-			truerange = v
+			const truerange = v
 			// End CALC_TRUERANGE()
 			atr = atr * per + truerange
 
@@ -1445,7 +1445,7 @@ export class Indicators {
 		output.push(source[0])
 
 		for (let i = 1; i < size; ++i) {
-			let d = output[output.length - 1] * scale
+			const d = output[output.length - 1] * scale
 			output.push(source[i] > d ? source[i] : d)
 		}
 
@@ -1501,8 +1501,8 @@ export class Indicators {
 		let last = (high[0] + low[0]) * 0.5
 
 		for (let i = 1; i < size; ++i) {
-			let hl = (high[i] + low[i]) * 0.5
-			let br = volume[i] / 10000.0 / (high[i] - low[i])
+			const hl = (high[i] + low[i]) * 0.5
+			const br = volume[i] / 10000.0 / (high[i] - low[i])
 
 			output.push((hl - last) / br)
 			last = hl
@@ -2078,7 +2078,7 @@ export class Indicators {
 
 		let short_per = 2 / (short_period + 1)
 		let long_per = 2 / (long_period + 1)
-		let signal_per = 2 / (signal_period + 1)
+		const signal_per = 2 / (signal_period + 1)
 
 		if (short_period == 12 && long_period == 26) {
 			short_per = 0.15
@@ -4420,8 +4420,8 @@ export class Indicators {
 	
 		let i;
 		for (i = lag; i < size; ++i) {
-			let c = input[i];
-			let l = input[i-lag];
+			const c = input[i];
+			const l = input[i-lag];
 	
 			val = ((c + (c-l))-val) * per + val;
 			output.push(val)
@@ -5425,7 +5425,7 @@ export class Indicators {
 		const b = (xy_sum / stddev_period - x_sum / stddev_period * y_sum / stddev_period) / (xsq_sum / stddev_period - (x_sum / stddev_period) * (x_sum / stddev_period))
 		const a = y_sum / stddev_period - b * x_sum / stddev_period
 
-		let higher = source[i] - (a + b * stddev_period)
+		const higher = source[i] - (a + b * stddev_period)
 		if (higher > 0) {
 			gains_ema = higher * higher / stddev_period
 		} else {
