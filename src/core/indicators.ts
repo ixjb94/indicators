@@ -13,7 +13,7 @@ export class Indicators {
 	 * @param empty - example NaN | Null | 0 | false | etc.
 	 * @returns 
 	 */
-	async normalize(originalLength: number, source: Array<number> | string, empty: any = NaN): Promise<Array<number>> {
+	async normalize(originalLength: number, source: Array<number> | string, empty = NaN): Promise<Array<number>> {
 		const diff = originalLength - source.length
 
 		const emptyList: Array<any> = []
@@ -888,55 +888,24 @@ export class Indicators {
 	 * @param size 
 	 * @returns 
 	 */
-	async crossany(a: number[], b: number[], size: number = a.length): Promise<Array<boolean>> {
-
-		const output: Array<boolean> = []
-
-		let i
-		for (i = 1; i < size; ++i) {
-			let c: any = (a[i] > b[i] && a[i - 1] <= b[i - 1]) || (a[i] < b[i] && a[i - 1] >= b[i - 1])
-
-			if (!c) {
-				c = 0
-			} else {
-				c = 1
-			}
-
-			output.push(c)
-			// output.push((a[i] > b[i] && a[i-1] <= b[i-1]) || (a[i] < b[i] && a[i-1] >= b[i-1]))
+	async crossany(a: number[], b: number[], size: number = a.length) {
+	
+		const output: boolean[] = []
+	
+		for (let i = 1; i < size; ++i) {
+			output.push( (a[i] > b[i] && a[i-1] <= b[i-1])
+					 || (a[i] < b[i] && a[i-1] >= b[i-1])
+			)
 		}
-
-		return output
 	}
 
-	/**
-	 * @TODO Create better version
-	 * 
-	 * @param a 
-	 * @param b 
-	 * @param size 
-	 * @returns 
-	 */
-	async crossover(a: number[], b: number[], size: number = a.length): Promise<Array<boolean>> {
-
-		const output: Array<boolean> = []
-
-		let i
-		for (i = 1; i < size; ++i) {
-
-			let c: any = a[i] > b[i] && a[i - 1] <= b[i - 1]
-			if (!c) {
-				c = 0
-			} else {
-				c = 1
-			}
-
-			output.push(c)
-
-			// output.push(a[i] > b[i] && a[i-1] <= b[i-1])
+	async crossover(a: number[], b: number[], size: number = a.length) {
+	
+		const output: boolean[] = []
+	
+		for (let i = 1; i < size; ++i) {
+			output.push(a[i] > b[i] && a[i-1] <= b[i-1])
 		}
-
-		return output
 	}
 
 	/**
