@@ -4463,7 +4463,7 @@ export class IndicatorsNormalized {
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
 
-		let per = 1 / period
+		const per = 1 / period
 
 		const buffer_high: BufferNewPush = {
 			size: period,
@@ -5291,7 +5291,7 @@ export class IndicatorsNormalized {
 
 		--i
 
-		let b = (xy_sum / period - x_sum / period * y_sum / period) / (xsq_sum / period - (x_sum / period) * (x_sum / period))
+		const b = (xy_sum / period - x_sum / period * y_sum / period) / (xsq_sum / period - (x_sum / period) * (x_sum / period))
 
 		let the_max = high[i]
 		for (let j = 1; j < period; ++j) {
@@ -5315,7 +5315,7 @@ export class IndicatorsNormalized {
 			xy_sum += -y_sum + close[i] * period
 			y_sum += -close[i - period] + close[i]
 
-			let b = (xy_sum / period - x_sum / period * y_sum / period) / (xsq_sum / period - (x_sum / period) * (x_sum / period))
+			const b = (xy_sum / period - x_sum / period * y_sum / period) / (xsq_sum / period - (x_sum / period) * (x_sum / period))
 
 			let the_max = high[i]
 			for (let j = 1; j < period; ++j) {
