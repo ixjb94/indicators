@@ -44,7 +44,6 @@ index.html example:
 	<script>
 		const library = indicators
 		const ta = new library.Indicators()
-		const {close, open} = new library.Mock()
 
 		ta.ema(close, 20).then(data => console.log(data))
 	</script>
@@ -63,7 +62,6 @@ https://unpkg.com/@ixjb94/indicators@latest/dist/indicators-browser.js
 Indicators contains this classes:    
 1- Indicators: `new Indicators()`    
 2- IndicatorsNormalized: `new IndicatorsNormalized()`    
-3- Mock: `new Mock()`     
 
 Q: What is the difference between `Indicators` and `IndicatorsNormalized`?    
 A: `IndicatorsNormalized` will fill the gap for you, example (SMA 3 with 5 closes):
@@ -86,18 +84,6 @@ let ta = new Indicators()
 
 ta.sma(close, 20)
 ta.rsi(close, 14)
-```
-
-### Mock Data
-There is also a Mock class that contains `small` (Array: 77) and `big`(Array: 14,400) mock data.    
-Example:    
-```js
-import { Mock } from "@ixjb94/indicators"
-
-let {
-    open, high, low, close, volume,
-    smallOpen, smallHigh, smallLow, smallClose, smallVolume
-} = new Mock()
 ```
 
 ### Types & Intellisense & Browser Support
