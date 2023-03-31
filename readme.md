@@ -54,7 +54,12 @@ index.html example:
 </html>
 
 ```
-Note: you can move files from node_modules to something else you want like dist, public, etc.
+Note: you can move files from node_modules to somewhere else you want to like dist, public, etc.
+
+OR you can use unpkg:
+```
+https://unpkg.com/@ixjb94/indicators@latest/dist/indicators-browser.js
+```
 
 ### Indicators Contains
 Indicators contains this classes:    

@@ -43,7 +43,7 @@ export class Indicators {
 		size: number = close.length
 	): Promise<Array<number>> {
 
-		let output = []
+		const output = []
 
 		let sum = 0
 
@@ -76,16 +76,16 @@ export class Indicators {
 		size: number = close.length
 	): Promise<Array<number>> {
 
-		let start = long_period - 1
+		const start = long_period - 1
 
 		// if (short_period < 1) return "Invalid Options"
 		// if (long_period < short_period) return "Invalid Options"
 		// if (size <= long_period - 1) return "Out of range"
 
-		let short_per = 2 / (short_period + 1)
-		let long_per = 2 / (long_period + 1)
+		const short_per = 2 / (short_period + 1)
+		const long_per = 2 / (long_period + 1)
 
-		let output = []
+		const output = []
 
 		let sum = 0
 		let short_ema = 0
@@ -128,13 +128,13 @@ export class Indicators {
 		period: number, size: number = high.length
 	): Promise<Array<number>> {
 
-		let output = []
+		const output = []
 
 		// if (period < 2) return "Invalid Options"
 		// if (size <= (period - 1) * 2) return "Out of range"
 
-		let per = ((period - 1)) / period
-		let invper = 1.0 / (period)
+		const per = ((period - 1)) / period
+		const invper = 1.0 / (period)
 
 		let dmup = 0
 		let dmdown = 0
@@ -227,7 +227,7 @@ export class Indicators {
 		period: number, size: number = high.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 2) return "Invalid Options"
 		// if (size <= (period-1) * 3) return "Out of Range"
@@ -360,9 +360,9 @@ export class Indicators {
 		size: number = high.length
 	): Promise<Array<number>> {
 
-		let period = 34;
+		const period = 34;
 
-		let output = []
+		const output = []
 
 		// if (size <= 33) return "Out of range"
 
@@ -372,7 +372,7 @@ export class Indicators {
 		let per5 = 1.0 / 5.0
 
 		for (let index = 0; index < 34; ++index) {
-			let hl = 0.5 * (high[index] + low[index])
+			const hl = 0.5 * (high[index] + low[index])
 
 			sum34 += hl
 
@@ -385,7 +385,7 @@ export class Indicators {
 		output.push(per5 * sum5 - per34 * sum34)
 
 		for (let index = period; index < size; ++index) {
-			let hl = 0.5 * (high[index] + low[index])
+			const hl = 0.5 * (high[index] + low[index])
 
 			sum34 += hl
 			sum5 += hl
@@ -413,15 +413,15 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output = []
+		const output = []
 
 		// if (short_period < 1) return "Invalid Options"
 		// if (long_period < 2) return "Invalid Options"
 		// if (long_period < short_period) return "Invalid Options"
 		// if (size <= 1) return "Out of range"
 
-		let short_per = 2 / (short_period + 1)
-		let long_per = 2 / (long_period + 1)
+		const short_per = 2 / (short_period + 1)
+		const long_per = 2 / (long_period + 1)
 
 		let short_ema = source[0]
 		let long_ema = source[0]
@@ -453,13 +453,13 @@ export class Indicators {
 		period: number, size: number = high.length
 	): Promise<Array<Array<number>>> {
 
-		let adown: Array<number> = []
-		let aup: Array<number> = []
+		const adown: Array<number> = []
+		const aup: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period) return "Out of range"
 
-		let scale = 100.0 / period
+		const scale = 100.0 / period
 		let trail = 0
 		let maxi = -1
 		let mini = -1
@@ -531,12 +531,12 @@ export class Indicators {
 		period: number, size: number = high.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period) return "Out of range"
 
-		let scale = 100.0 / period
+		const scale = 100.0 / period
 
 		let trail = 0
 		let maxi = -1
@@ -607,12 +607,12 @@ export class Indicators {
 		period: number, size: number = high.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid options"
 		// if (size <= period - 1) return "Out of range"
 
-		let per = 1.0 / period
+		const per = 1.0 / period
 
 		let sum = 0
 		let truerange
@@ -684,7 +684,7 @@ export class Indicators {
 		size: number = open.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		for (let index = 0; index < size; ++index) {
 			output.push((open[index] + high[index] + low[index] + close[index]) * 0.25)
@@ -706,9 +706,9 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<Array<number>>> {
 
-		let lower: Array<number> = []
-		let middle: Array<number> = []
-		let upper: Array<number> = []
+		const lower: Array<number> = []
+		const middle: Array<number> = []
+		const upper: Array<number> = []
 
 		const scale = 1.0 / period
 
@@ -725,7 +725,7 @@ export class Indicators {
 
 		let sd = Math.sqrt(sum2 * scale - (sum * scale) * (sum * scale))
 
-		let calc_middle = sum * scale
+		const calc_middle = sum * scale
 		lower.push(calc_middle - stddev * sd)
 		upper.push(calc_middle + stddev * sd)
 		middle.push(calc_middle)
@@ -739,7 +739,7 @@ export class Indicators {
 
 			sd = Math.sqrt(sum2 * scale - (sum * scale) * (sum * scale))
 
-			let calc_middle = sum * scale
+			const calc_middle = sum * scale
 			upper.push(calc_middle + stddev * sd)
 			lower.push(calc_middle - stddev * sd)
 			middle.push(calc_middle)
@@ -763,10 +763,10 @@ export class Indicators {
 		size: number = open.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		for (let index = 0; index < size; ++index) {
-			let hl = high[index] - low[index]
+			const hl = high[index] - low[index]
 
 			if (hl <= 0.0) {
 				output[index] = 0
@@ -800,9 +800,9 @@ export class Indicators {
 		// if (period < 1) return "Invalid Options"
 		// if (size <= (period-1) * 2) return "Out of range"
 
-		let output: number[] = []
+		const output: number[] = []
 	
-		let sum = new ti_buffer(period)
+		const sum = new ti_buffer(period)
 	
 		let i, j
 		for (i = 0; i < size; ++i) {
@@ -843,7 +843,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid options"
 		// if (size <= period) return "Out of range"
@@ -890,7 +890,7 @@ export class Indicators {
 	 */
 	async crossany(a: any, b: any, size: number = a.length): Promise<Array<boolean>> {
 
-		let output: Array<boolean> = []
+		const output: Array<boolean> = []
 
 		let i
 		for (i = 1; i < size; ++i) {
@@ -919,7 +919,7 @@ export class Indicators {
 	 */
 	async crossover(a: any, b: any, size: number = a.length): Promise<Array<boolean>> {
 
-		let output: Array<boolean> = []
+		const output: Array<boolean> = []
 
 		let i
 		for (i = 1; i < size; ++i) {
@@ -993,14 +993,14 @@ export class Indicators {
 		period: number, size: number = high.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period * 2 - 1) return "Out of range"
 
 		const per = 2 / (period + 1)
 
-		let lag: BufferNewQPush = {
+		const lag: BufferNewQPush = {
 			size: period,
 			index: 0,
 			pushes: 0,
@@ -1051,7 +1051,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		const scale = 1.0 / period
 
@@ -1077,7 +1077,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= (period-1) * 2) return "Out of range"
@@ -1124,8 +1124,8 @@ export class Indicators {
 		period: number, size: number = high.length
 	): Promise<Array<Array<number>>> {
 
-		let plus_di: Array<number> = []
-		let minus_di: Array<number> = []
+		const plus_di: Array<number> = []
+		const minus_di: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
@@ -1233,8 +1233,8 @@ export class Indicators {
 		period: number, size: number = high.length
 	): Promise<Array<Array<number>>> {
 
-		let plus_dm: Array<number> = []
-		let minus_dm: Array<number> = []
+		const plus_dm: Array<number> = []
+		const minus_dm: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
@@ -1312,7 +1312,7 @@ export class Indicators {
 
 		const back = period / 2 + 1
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		const scale = 1.0 / period
 
@@ -1349,7 +1349,7 @@ export class Indicators {
 		period: number, size: number = high.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
@@ -1389,7 +1389,6 @@ export class Indicators {
 		let _dx = dm_diff / dm_sum * 100
 
 		output.push(_dx)
-
 
 		for (let i = period; i < size; ++i) {
 
@@ -1439,7 +1438,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		const scale = 1.0 - 1.0 / period
 
@@ -1464,7 +1463,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= 0) return "Out of range"
@@ -1495,7 +1494,7 @@ export class Indicators {
 		size: number = high.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (size <= 1) return "Out of range"
 
@@ -1525,8 +1524,8 @@ export class Indicators {
 		period: number, size: number = high.length
 	): Promise<Array<Array<number>>> {
 
-		let fisher: Array<number> = []
-		let signal: Array<number> = []
+		const fisher: Array<number> = []
+		const signal: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
@@ -1610,7 +1609,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period) return "Out of range"
@@ -1672,7 +1671,7 @@ export class Indicators {
 	 */
 	async hma(input: number[], period: number, size=input.length): Promise<Array<number>> {
 
-		let output: number[] = []
+		const output: number[] = []
 	
 		const period2 = Math.floor(period / 2)
 		const periodsqrt = Math.floor(Math.sqrt(period))
@@ -1702,7 +1701,7 @@ export class Indicators {
 			}
 		}
 	
-		let buff = new ti_buffer(periodsqrt)
+		const buff = new ti_buffer(periodsqrt)
 	
 		for (i = period-1; i < size; ++i) {
 			weight_sum += input[i] * period;
@@ -1753,7 +1752,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
@@ -1818,7 +1817,7 @@ export class Indicators {
 		const short_per = 2 / (short_period + 1)
 		const long_per = 2 / (long_period + 1)
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 		let cm = 0
 		let prev_hlc = high[0] + low[0] + close[0]
 		let trend = -1
@@ -1870,7 +1869,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 0) return "Invalid Options"
 		// if (size <= period) return "Out of range"
@@ -1894,7 +1893,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
@@ -1907,7 +1906,7 @@ export class Indicators {
 		let y = 0
 		let xy = 0
 		// Start INIT()
-		let p = (1.0 / (period))
+		const p = (1.0 / (period))
 		// End INIT()
 		for (let i = 0; i < (period) - 1; ++i) {
 			x += i + 1
@@ -1952,7 +1951,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
@@ -1965,7 +1964,7 @@ export class Indicators {
 		let y = 0
 		let xy = 0
 		// Start INIT()
-		let p = (1.0 / (period))
+		const p = (1.0 / (period))
 		// End INIT()
 		for (let i = 0; i < (period) - 1; ++i) {
 			x += i + 1
@@ -2010,7 +2009,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
@@ -2022,9 +2021,6 @@ export class Indicators {
 
 		let y = 0
 		let xy = 0
-		// Start INIT()
-		let p
-		// End INIT()
 		for (let i = 0; i < (period) - 1; ++i) {
 			x += i + 1
 			x2 += (i + 1) * (i + 1)
@@ -2070,9 +2066,9 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<Array<number>>> {
 
-		let macd: Array<number> = []
-		let signal: Array<number> = []
-		let hist: Array<number> = []
+		const macd: Array<number> = []
+		const signal: Array<number> = []
+		const hist: Array<number> = []
 
 		// if (short_period < 1) return "Invalid Options"
 		// if (long_period < 2) return "Invalid Options"
@@ -2127,7 +2123,7 @@ export class Indicators {
 		volume: Array<number>, size: number = high.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (size <= 0) return "Out of range"
 
@@ -2151,11 +2147,7 @@ export class Indicators {
 		period: number, size: number = high.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
-
-		// mass_start
-		let sum_p = period - 1
-		// mass_start
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= 16 + sum_p) return "Out of range"
@@ -2167,7 +2159,7 @@ export class Indicators {
 
 		let ema2 = ema
 
-		let sum: BufferNewPush = {
+		const sum: BufferNewPush = {
 			index: 0,
 			pushes: 0,
 			size: period,
@@ -2176,7 +2168,7 @@ export class Indicators {
 		}
 
 		for (let i = 0; i < size; ++i) {
-			let hl = high[i] - low[i]
+			const hl = high[i] - low[i]
 
 			ema = ema * per1 + hl * per
 
@@ -2224,7 +2216,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
@@ -2274,7 +2266,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		const scale = 1.0 / period
 
@@ -2316,7 +2308,7 @@ export class Indicators {
 		size: number = high.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		for (let i = 0; i < size; ++i) {
 			output.push((high[i] + low[i]) * 0.5)
@@ -2344,13 +2336,13 @@ export class Indicators {
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period) return "Out of range"
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// Start TYPPRICE()
 		let ytyp = ((high[(0)] + low[(0)] + close[(0)]) * (1.0 / 3.0))
 		// End TYPPRICE()
 
-		let up: BufferNewPush = {
+		const up: BufferNewPush = {
 			size: period,
 			index: 0,
 			pushes: 0,
@@ -2358,7 +2350,7 @@ export class Indicators {
 			vals: []
 		}
 
-		let down: BufferNewPush = {
+		const down: BufferNewPush = {
 			size: period,
 			index: 0,
 			pushes: 0,
@@ -2369,7 +2361,7 @@ export class Indicators {
 		for (let i = 1; i < size; ++i) {
 
 			// Start TYPPRICE()
-			let typ = ((high[(i)] + low[(i)] + close[(i)]) * (1.0 / 3.0))
+			const typ = ((high[(i)] + low[(i)] + close[(i)]) * (1.0 / 3.0))
 			// End TYPPRICE()
 
 			const bar = typ * volume[i]
@@ -2488,7 +2480,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
@@ -2538,7 +2530,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period) return "Out of range"
@@ -2562,8 +2554,8 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<Array<number>>> {
 
-		let sine: Array<number> = []
-		let lead: Array<number> = []
+		const sine: Array<number> = []
+		const lead: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period) return "Out of range"
@@ -2621,7 +2613,7 @@ export class Indicators {
 		size: number = high.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
@@ -2690,7 +2682,7 @@ export class Indicators {
 		size: number = close.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (size <= 0) return "Out of range"
 
@@ -2721,7 +2713,7 @@ export class Indicators {
 		size: number = close.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 		let sum = 0
 		output.push(sum)
 
@@ -2756,15 +2748,15 @@ export class Indicators {
 		long_period: number, size: number = source.length
 	): Promise<Array<number>> {
 
-		let ppo: Array<number> = []
+		const ppo: Array<number> = []
 
 		// if (short_period < 1) return "Invalid Options"
 		// if (long_period < 2) return "Invalid Options"
 		// if (long_period < short_period) return "Invalid Options"
 		// if (size <= 1) return "Out of range"
 
-		let short_per = 2 / (short_period + 1)
-		let long_per = 2 / (long_period + 1)
+		const short_per = 2 / (short_period + 1)
+		const long_per = 2 / (long_period + 1)
 
 		let short_ema = source[0]
 		let long_ema = source[0]
@@ -2795,7 +2787,7 @@ export class Indicators {
 		size: number = high.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (accel_step <= 0) return "Invalid Options"
 		// if (accel_max <= accel_step) return "Invalid Options"
@@ -2883,7 +2875,7 @@ export class Indicators {
 		size: number = close.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (size <= 0) return "Out of range"
 
@@ -2913,7 +2905,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period) return "Out of range"
@@ -2937,7 +2929,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period) return "Out of range"
@@ -2961,7 +2953,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		const per = 1.0 / (period)
 
@@ -3006,7 +2998,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		const scale = 1.0 / period
 
@@ -3042,7 +3034,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		const scale = 1.0 / period
 
@@ -3088,7 +3080,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		const scale = 1.0 / period
 
@@ -3145,8 +3137,8 @@ export class Indicators {
 		const kper = 1.0 / kslow
 		const dper = 1.0 / dperiod
 
-		let stoch: Array<number> = []
-		let stoch_ma: Array<number> = []
+		const stoch: Array<number> = []
+		const stoch_ma: Array<number> = []
 
 		// if (kperiod < 1) return "Invalid Options"
 		// if (kslow < 1) return "Invalid Options"
@@ -3160,7 +3152,7 @@ export class Indicators {
 		let min = low[0]
 		let bar
 
-		let k_sum: BufferNewPush = {
+		const k_sum: BufferNewPush = {
 			size: kslow,
 			index: 0,
 			pushes: 0,
@@ -3168,7 +3160,7 @@ export class Indicators {
 			vals: []
 		}
 
-		let d_sum: BufferNewPush = {
+		const d_sum: BufferNewPush = {
 			size: dperiod,
 			index: 0,
 			pushes: 0,
@@ -3280,14 +3272,14 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		const per = 1.0 / (period)
 
 		// if (period < 2) return "Invalid Options"
 		// if (size <= (period) * 2 - 1) return "Out of range"
 
-		let rsi: BufferNewPush = {
+		const rsi: BufferNewPush = {
 			size: period,
 			index: 0,
 			pushes: 0,
@@ -3401,7 +3393,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
@@ -3435,7 +3427,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= (period - 1) * 3) return "Out of range"
@@ -3485,7 +3477,7 @@ export class Indicators {
 		close: Array<number>, size: number = high.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 		let truerange
 
 		output[0] = high[0] - low[0]
@@ -3523,12 +3515,12 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
 
-		let weights = 1 / ((period % 2) ?
+		const weights = 1 / ((period % 2) ?
 			((period / 2 + 1) * (period / 2 + 1)) :
 			((period / 2 + 1) * (period / 2)))
 
@@ -3585,7 +3577,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= ((period-1)*3)+1) return "Out of range"
@@ -3636,7 +3628,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
@@ -3649,7 +3641,7 @@ export class Indicators {
 		let y = 0
 		let xy = 0
 		// Start INIT()
-		let p = (1.0 / (period))
+		const p = (1.0 / (period))
 		// End INIT()
 		for (let i = 0; i < (period) - 1; ++i) {
 			x += i + 1
@@ -3694,7 +3686,7 @@ export class Indicators {
 		close: Array<number>, size: number = high.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		for (let i = 0; i < size; ++i) {
 			output.push((high[i] + low[i] + close[i]) * (1.0 / 3.0))
@@ -3721,7 +3713,7 @@ export class Indicators {
 		size: number = high.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (short_period < 1) return "Invalid Options"
 		// if (medium_period < short_period) return "Invalid Options"
@@ -3729,7 +3721,7 @@ export class Indicators {
 		// if (size <= medium_period) return "Out of range"
 
 
-		let bp_buf: BufferNewPush = {
+		const bp_buf: BufferNewPush = {
 			size: long_period,
 			index: 0,
 			pushes: 0,
@@ -3737,7 +3729,7 @@ export class Indicators {
 			vals: []
 		}
 
-		let r_buf: BufferNewPush = {
+		const r_buf: BufferNewPush = {
 			size: long_period,
 			index: 0,
 			pushes: 0,
@@ -3839,7 +3831,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		const scale = 1.0 / period
 
@@ -3881,7 +3873,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period) return "Out of range"
@@ -3976,7 +3968,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		const short_div = 1.0 / short_period
 		const long_div = 1.0 / long_period
@@ -4030,8 +4022,8 @@ export class Indicators {
 			short_sum -= source[i - short_period]
 			short_sum2 -= source[i - short_period] * source[i - short_period]
 
-			let short_stddev = Math.sqrt(short_sum2 * short_div - (short_sum * short_div) * (short_sum * short_div))
-			let long_stddev = Math.sqrt(long_sum2 * long_div - (long_sum * long_div) * (long_sum * long_div))
+			const short_stddev = Math.sqrt(short_sum2 * short_div - (short_sum * short_div) * (short_sum * short_div))
+			const long_stddev = Math.sqrt(long_sum2 * long_div - (long_sum * long_div) * (long_sum * long_div))
 			let k = short_stddev / long_stddev
 			if (k != k) k = 0
 			k *= alpha
@@ -4055,7 +4047,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		const scale = 1.0 / period
 		const annual = Math.sqrt(252) /* Multiplier, number of trading days in year. */
@@ -4108,7 +4100,7 @@ export class Indicators {
 		long_period: number, size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		const short_div = 1.0 / short_period
 		const long_div = 1.0 / long_period
@@ -4159,7 +4151,7 @@ export class Indicators {
 		period: number, size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
@@ -4201,7 +4193,7 @@ export class Indicators {
 
 		// if (size <= 1) return "Out of range"
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 		let sum = 0
 		let yc = close[0]
 
@@ -4242,7 +4234,7 @@ export class Indicators {
 		close: Array<number>, size: number = high.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		for (let i = 0; i < size; ++i) {
 			output.push((high[i] + low[i] + close[i] + close[i]) * 0.25)
@@ -4263,7 +4255,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
@@ -4303,7 +4295,7 @@ export class Indicators {
 		size: number = high.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
@@ -4380,7 +4372,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
@@ -4419,7 +4411,7 @@ export class Indicators {
 		
 		const lag = Math.floor((period - 1) / 2)
 	
-		let output: number[] = []
+		const output: number[] = []
 	
 		const per = 2 / (period + 1)
 	
@@ -4454,23 +4446,23 @@ export class Indicators {
 		size: number = high.length
 	): Promise<Array<Array<number>>> {
 
-		let upper_band: Array<number> = []
-		let lower_band: Array<number> = []
-		let middle_point: Array<number> = []
+		const upper_band: Array<number> = []
+		const lower_band: Array<number> = []
+		const middle_point: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
 
-		let per = 1. / period
+		const per = 1. / period
 
-		let buffer_high: BufferNewPush = {
+		const buffer_high: BufferNewPush = {
 			size: period,
 			index: 0,
 			pushes: 0,
 			sum: 0,
 			vals: []
 		}
-		let buffer_low: BufferNewPush = {
+		const buffer_low: BufferNewPush = {
 			size: period,
 			index: 0,
 			pushes: 0,
@@ -4483,10 +4475,10 @@ export class Indicators {
 		for (let i = 0; i < period; ++i) {
 			// Start MULT
 			// MULT(i) (4. * (high[i] - low[i]) / (high[i] + low[i]))
-			let mult = (4. * (high[i] - low[i]) / (high[i] + low[i]))
+			const mult = (4. * (high[i] - low[i]) / (high[i] + low[i]))
 			// End MULT
 
-			let high_val = (1. + mult) * high[i]
+			const high_val = (1. + mult) * high[i]
 
 			// Start ti_buffer_push
 			// BUFFER = buffer_high
@@ -4503,7 +4495,7 @@ export class Indicators {
 			if (buffer_high.index >= buffer_high.size) buffer_high.index = 0
 			// End ti_buffer_push
 
-			let low_val = (1. - mult) * low[i]
+			const low_val = (1. - mult) * low[i]
 
 			// Start ti_buffer_push
 			// BUFFER = buffer_low
@@ -4529,10 +4521,10 @@ export class Indicators {
 
 		for (let i = period; i < size; ++i) {
 			// Start MULT
-			let mult = (4. * (high[i] - low[i]) / (high[i] + low[i]))
+			const mult = (4. * (high[i] - low[i]) / (high[i] + low[i]))
 			// End MULT
 
-			let high_val = (1. + mult) * high[i]
+			const high_val = (1. + mult) * high[i]
 			// Start ti_buffer_push
 			// BUFFER = buffer_high
 			// VAL    = high_val
@@ -4548,7 +4540,7 @@ export class Indicators {
 			if (buffer_high.index >= buffer_high.size) buffer_high.index = 0
 			// End ti_buffer_push
 
-			let low_val = (1. - mult) * low[i]
+			const low_val = (1. - mult) * low[i]
 
 			// Start ti_buffer_push
 			// BUFFER = buffer_low
@@ -4590,7 +4582,7 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// validate options
 		// if (period < 1) return "Invalid Options"
@@ -4598,7 +4590,7 @@ export class Indicators {
 		// if ((offset < 0) || (offset > 1)) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
 
-		let weights: Array<number> = []
+		const weights: Array<number> = []
 
 		const m = Math.floor(offset * (period - 1))
 		const s = period / sigma
@@ -4641,8 +4633,8 @@ export class Indicators {
 		size: number = high.length
 	): Promise<Array<Array<number>>> {
 
-		let ce_high: Array<number> = []
-		let ce_low: Array<number> = []
+		const ce_high: Array<number> = []
+		const ce_low: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
@@ -4763,7 +4755,7 @@ export class Indicators {
 		period: number, size: number = high.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
@@ -4808,9 +4800,9 @@ export class Indicators {
 	 */
 	async copp(data: number[], period1: number, period2: number): Promise<number[]> {
 
-		let roc1 = new Array(data.length);
-		let roc2 = new Array(data.length);
-		let coppock = new Array(data.length);
+		const roc1 = new Array(data.length);
+		const roc2 = new Array(data.length);
+		const coppock = new Array(data.length);
 
 		for (let i = 0; i < data.length; i++) {
 			if (i < period1 - 1) {
@@ -4837,9 +4829,9 @@ export class Indicators {
 	 */
 	async dc(highs: number[], lows: number[], period: number): Promise<[number[], number[], number[]]> {
 		
-		let upper: number[] = []
-		let lower: number[] = []
-		let middle: number[] = []
+		const upper: number[] = []
+		const lower: number[] = []
+		const middle: number[] = []
 	
 		for (let i = period - 1; i < highs.length; i++) {
 			upper.push(Math.max(...highs.slice(i - period + 1, i + 1)))
@@ -4848,42 +4840,6 @@ export class Indicators {
 		}
 	
 		return [upper, middle, lower]
-	}
-
-	/**
-	 * @ChatGPT
-	 * @param highs 
-	 * @param lows 
-	 * @param period 
-	 * @returns [Upper, Middle, Lower] 
-	 */
-	async _dc(highs: number[], lows: number[], period: number): Promise<Array<Array<number>>> {
-
-		let upper = -Infinity
-		let lower = Infinity
-		let middle = 0
-		let result: [number[], number[], number[]] = [[], [], []]
-	
-		for (let i = 0; i < period; i++) {
-			upper = Math.max(upper, highs[i])
-			lower = Math.min(lower, lows[i])
-		}
-	
-		middle = (upper + lower) / 2
-		result[0].push(upper)
-		result[1].push(middle)
-		result[2].push(lower)
-	
-		for (let i = period; i < highs.length; i++) {
-			upper = Math.max(upper, highs[i])
-			lower = Math.min(lower, lows[i])
-			middle = (upper + lower) / 2
-			result[0].push(upper)
-			result[1].push(middle)
-			result[2].push(lower)
-		}
-	
-		return result
 	}
 
 	/**
@@ -4899,7 +4855,7 @@ export class Indicators {
 		period: number, size: number = close.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= 1) return "Out of range"
@@ -4937,9 +4893,9 @@ export class Indicators {
 		multiple: number, size: number = high.length
 	): Promise<Array<Array<number>>> {
 
-		let kc_lower: Array<number> = []
-		let kc_middle: Array<number> = []
-		let kc_upper: Array<number> = []
+		const kc_lower: Array<number> = []
+		const kc_middle: Array<number> = []
+		const kc_upper: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 
@@ -5002,8 +4958,8 @@ export class Indicators {
 		size: number = source.length
 	): Promise<Array<Array<number>>> {
 
-		let kst: Array<number> = []
-		let kst_signal: Array<number> = []
+		const kst: Array<number> = []
+		const kst_signal: Array<number> = []
 
 		// if(!(roc1 < roc2 && roc2 < roc3 && roc3 < roc4)) return "Invalid Options"
 
@@ -5019,11 +4975,11 @@ export class Indicators {
 		if (max_ma < ma4) max_ma = ma4
 		// End MAX4
 
-		let per1 = 2. / (ma1 + 1)
-		let per2 = 2. / (ma2 + 1)
-		let per3 = 2. / (ma3 + 1)
-		let per4 = 2. / (ma4 + 1)
-		let per_signal = 2. / (9. + 1.)
+		const per1 = 2. / (ma1 + 1)
+		const per2 = 2. / (ma2 + 1)
+		const per3 = 2. / (ma3 + 1)
+		const per4 = 2. / (ma4 + 1)
+		const per_signal = 2. / (9. + 1.)
 
 		// #define ROC(idx, period) ((real[idx] - real[idx-period]) / real[idx-period])
 
@@ -5091,8 +5047,8 @@ export class Indicators {
 		size: number = high.length
 	): Promise<Array<Array<number>>> {
 
-		let pbands_lower: Array<number> = []
-		let pbands_upper: Array<number> = []
+		const pbands_lower: Array<number> = []
+		const pbands_upper: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
@@ -5111,7 +5067,7 @@ export class Indicators {
 
 		--i
 
-		let b = (xy_sum / period - x_sum / period * y_sum / period) / (xsq_sum / period - (x_sum / period) * (x_sum / period))
+		const b = (xy_sum / period - x_sum / period * y_sum / period) / (xsq_sum / period - (x_sum / period) * (x_sum / period))
 
 		let the_max = high[i]
 
@@ -5137,7 +5093,7 @@ export class Indicators {
 			xy_sum += -y_sum + close[i] * period;
 			y_sum += -close[i - period] + close[i]
 
-			let b = (xy_sum / period - x_sum / period * y_sum / period) / (xsq_sum / period - (x_sum / period) * (x_sum / period));
+			const b = (xy_sum / period - x_sum / period * y_sum / period) / (xsq_sum / period - (x_sum / period) * (x_sum / period));
 
 			let the_max = high[i]
 			for (let j = 1; j < period; ++j) {
@@ -5178,7 +5134,7 @@ export class Indicators {
 		ema_period: number, size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period) return "Out of range"
@@ -5189,7 +5145,7 @@ export class Indicators {
 
 		const per = 2. / (ema_period + 1.)
 
-		let denom: BufferNewPush = {
+		const denom: BufferNewPush = {
 			size: period,
 			index: 0,
 			pushes: 0,
@@ -5232,7 +5188,7 @@ export class Indicators {
 
 		// Start SIGN
 		// let numer = SIGN(source[i] - source[i-period]) * 100. * Math.sqrt(Math.pow(source[i] - source[i-period], 2) + 100.)
-		let numer = ((source[i] - source[i - period]) > 0 ? 1. : -1.) * 100. * Math.sqrt(Math.pow(source[i] - source[i - period], 2) + 100.)
+		const numer = ((source[i] - source[i - period]) > 0 ? 1. : -1.) * 100. * Math.sqrt(Math.pow(source[i] - source[i - period], 2) + 100.)
 		// End SIGN
 
 		let ema = numer / denom.sum
@@ -5256,7 +5212,7 @@ export class Indicators {
 
 			// Start SIGN
 			// let numer2 = SIGN(real[i] - real[i-(int)period]) * 100. * sqrt(pow(real[i] - real[i-(int)period], 2) + 100.)
-			let numer2 = ((source[i] - source[i - period]) > 0 ? 1. : -1.) * 100. * Math.sqrt(Math.pow(source[i] - source[i - period], 2) + 100.)
+			const numer2 = ((source[i] - source[i - period]) > 0 ? 1. : -1.) * 100. * Math.sqrt(Math.pow(source[i] - source[i - period], 2) + 100.)
 			// End SIGN
 
 			// Start EMA_NEXT
@@ -5286,7 +5242,7 @@ export class Indicators {
 		ema_period: number, size: number = high.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (ema_period < 1) return "Invalid Options"
@@ -5307,7 +5263,7 @@ export class Indicators {
 
 		--i
 
-		let b = (xy_sum / period - x_sum / period * y_sum / period) / (xsq_sum / period - (x_sum / period) * (x_sum / period))
+		const b = (xy_sum / period - x_sum / period * y_sum / period) / (xsq_sum / period - (x_sum / period) * (x_sum / period))
 
 		let the_max = high[i]
 		for (let j = 1; j < period; ++j) {
@@ -5331,7 +5287,7 @@ export class Indicators {
 			xy_sum += -y_sum + close[i] * period
 			y_sum += -close[i - period] + close[i]
 
-			let b = (xy_sum / period - x_sum / period * y_sum / period) / (xsq_sum / period - (x_sum / period) * (x_sum / period))
+			const b = (xy_sum / period - x_sum / period * y_sum / period) / (xsq_sum / period - (x_sum / period) * (x_sum / period))
 
 			let the_max = high[i]
 			for (let j = 1; j < period; ++j) {
@@ -5347,7 +5303,7 @@ export class Indicators {
 				}
 			}
 
-			let osc = (close[i] - the_min) / (the_max - the_min) * 100.
+			const osc = (close[i] - the_min) / (the_max - the_min) * 100.
 			ema = (osc - ema) * 2. / (1 + ema_period) + ema
 			output.push(ema)
 		}
@@ -5368,7 +5324,7 @@ export class Indicators {
 		lookback_period: number, size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (lookback_period < 1) return "Invalid Options"
@@ -5406,7 +5362,7 @@ export class Indicators {
 		beta: number, size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 		// if (size <= period - 1) return "Out of range"
@@ -5416,13 +5372,13 @@ export class Indicators {
 		let rmta = (1. - alpha) * source[0] + alpha * (source[0] + b)
 
 		for (let i = 1; i < period - 1; ++i) {
-			let next_b = (1. - alpha) * b + source[i]
+			const next_b = (1. - alpha) * b + source[i]
 			rmta = (1. - alpha) * rmta + alpha * (source[i] + next_b - b)
 			b = next_b
 		}
 
 		for (let i = period - 1; i < size; ++i) {
-			let next_b = (1. - alpha) * b + source[i]
+			const  next_b = (1. - alpha) * b + source[i]
 			rmta = (1. - alpha) * rmta + alpha * (source[i] + next_b - b)
 			b = next_b
 			output.push(rmta)
@@ -5444,7 +5400,7 @@ export class Indicators {
 		stddev_period: number, size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (sma_period < 1) return "Invalid Options"
 		// if (stddev_period < 1) return "Invalid Options"
@@ -5466,8 +5422,8 @@ export class Indicators {
 		}
 
 		--i;
-		let b = (xy_sum / stddev_period - x_sum / stddev_period * y_sum / stddev_period) / (xsq_sum / stddev_period - (x_sum / stddev_period) * (x_sum / stddev_period))
-		let a = y_sum / stddev_period - b * x_sum / stddev_period
+		const b = (xy_sum / stddev_period - x_sum / stddev_period * y_sum / stddev_period) / (xsq_sum / stddev_period - (x_sum / stddev_period) * (x_sum / stddev_period))
+		const a = y_sum / stddev_period - b * x_sum / stddev_period
 
 		let higher = source[i] - (a + b * stddev_period)
 		if (higher > 0) {
@@ -5487,10 +5443,10 @@ export class Indicators {
 			xy_sum += -y_sum + source[i] * stddev_period
 			y_sum += -source[i - stddev_period] + source[i]
 
-			let b = (xy_sum / stddev_period - x_sum / stddev_period * y_sum / stddev_period) / (xsq_sum / stddev_period - (x_sum / stddev_period) * (x_sum / stddev_period))
-			let a = y_sum / stddev_period - b * x_sum / stddev_period
+			const b = (xy_sum / stddev_period - x_sum / stddev_period * y_sum / stddev_period) / (xsq_sum / stddev_period - (x_sum / stddev_period) * (x_sum / stddev_period))
+			const a = y_sum / stddev_period - b * x_sum / stddev_period
 
-			let higher = source[i] - (a + b * stddev_period)
+			const higher = source[i] - (a + b * stddev_period)
 
 			if (higher > 0) {
 				gains_ema = (higher * higher / stddev_period - gains_ema) * 2. / (sma_period + 1) + gains_ema
@@ -5526,7 +5482,7 @@ export class Indicators {
 		size: number = high.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (q_period < 1 || r_period < 1 || s_period < 1) {
 		//     return "Invalid Options"
@@ -5640,7 +5596,7 @@ export class Indicators {
 		z_period: number, size: number = source.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (y_period < 1 || z_period < 1) {
 		//     return "Invalid Options"
@@ -5700,7 +5656,7 @@ export class Indicators {
 		period: number, size: number = high.length
 	): Promise<Array<number>> {
 
-		let output: Array<number> = []
+		const output: Array<number> = []
 
 		// if (period < 1) return "Invalid Options"
 
