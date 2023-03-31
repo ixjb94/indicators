@@ -5005,7 +5005,7 @@ export class Indicators {
 			_4 = (ROC(i, roc4) - _4) * per4 + _4
 		}
 
-		let val = (_1 * 1. + _2 * 2. + _3 * 3. + _4 * 4.) / 10.
+		let val = (_1 * 1 + _2 * 2 + _3 * 3 + _4 * 4) / 10
 		kst_signal.push(val)
 
 		let _signal = val
@@ -5017,7 +5017,7 @@ export class Indicators {
 			_3 = (ROC(i, roc3) - _3) * per3 + _3
 			_4 = (ROC(i, roc4) - _4) * per4 + _4
 
-			val = (_1 * 1. + _2 * 2. + _3 * 3. + _4 * 4.) / 10.
+			val = (_1 * 1 + _2 * 2 + _3 * 3 + _4 * 4) / 10
 			kst.push(val)
 
 			_signal = (val - _signal) * per_signal + _signal
@@ -5188,7 +5188,7 @@ export class Indicators {
 
 		// Start SIGN
 		// let numer = SIGN(source[i] - source[i-period]) * 100. * Math.sqrt(Math.pow(source[i] - source[i-period], 2) + 100.)
-		const numer = ((source[i] - source[i - period]) > 0 ? 1. : -1.) * 100. * Math.sqrt(Math.pow(source[i] - source[i - period], 2) + 100.)
+		const numer = ((source[i] - source[i - period]) > 0 ? 1. : -1.) * 100 * Math.sqrt(Math.pow(source[i] - source[i - period], 2) + 100)
 		// End SIGN
 
 		let ema = numer / denom.sum
@@ -5212,7 +5212,7 @@ export class Indicators {
 
 			// Start SIGN
 			// let numer2 = SIGN(real[i] - real[i-(int)period]) * 100. * sqrt(pow(real[i] - real[i-(int)period], 2) + 100.)
-			const numer2 = ((source[i] - source[i - period]) > 0 ? 1. : -1.) * 100. * Math.sqrt(Math.pow(source[i] - source[i - period], 2) + 100.)
+			const numer2 = ((source[i] - source[i - period]) > 0 ? 1 : -1) * 100 * Math.sqrt(Math.pow(source[i] - source[i - period], 2) + 100)
 			// End SIGN
 
 			// Start EMA_NEXT
@@ -5278,7 +5278,7 @@ export class Indicators {
 			}
 		}
 
-		ema = (close[i] - the_min) / (the_max - the_min) * 100.
+		ema = (close[i] - the_min) / (the_max - the_min) * 100
 		output.push(ema)
 
 		++i
@@ -5303,7 +5303,7 @@ export class Indicators {
 				}
 			}
 
-			const osc = (close[i] - the_min) / (the_max - the_min) * 100.
+			const osc = (close[i] - the_min) / (the_max - the_min) * 100
 			ema = (osc - ema) * 2. / (1 + ema_period) + ema
 			output.push(ema)
 		}
@@ -5338,12 +5338,12 @@ export class Indicators {
 		losses_ema = ((0) > (source[i - lookback_period] - source[i]) ? (0) : (source[i - lookback_period] - source[i]))
 		++i
 
-		output.push(gains_ema / (gains_ema + losses_ema) * 100.)
+		output.push(gains_ema / (gains_ema + losses_ema) * 100)
 
 		for (; i < size; ++i) {
 			gains_ema = ((0) > (source[i] - source[i - lookback_period]) ? (0) : (source[i] - source[i - lookback_period]) - gains_ema) * 2. / (1 + period) + gains_ema
 			losses_ema = ((0) > (source[i - lookback_period] - source[i]) ? (0) : (source[i - lookback_period] - source[i]) - losses_ema) * 2. / (1 + period) + losses_ema
-			output.push(gains_ema / (gains_ema + losses_ema) * 100.)
+			output.push(gains_ema / (gains_ema + losses_ema) * 100)
 		}
 
 		return output
@@ -5433,9 +5433,9 @@ export class Indicators {
 		}
 
 		if (gains_ema + losses_ema == 0) {
-			output.push(50.)
+			output.push(50)
 		} else {
-			output.push(gains_ema / (gains_ema + losses_ema) * 100.)
+			output.push(gains_ema / (gains_ema + losses_ema) * 100)
 		}
 		++i
 
@@ -5455,9 +5455,9 @@ export class Indicators {
 			}
 
 			if (gains_ema + losses_ema == 0) {
-				output.push(50.)
+				output.push(50)
 			} else {
-				output.push(gains_ema / (gains_ema + losses_ema) * 100.)
+				output.push(gains_ema / (gains_ema + losses_ema) * 100)
 			}
 		}
 
@@ -5577,7 +5577,7 @@ export class Indicators {
 			ema_r_den = ((hh - ll) - ema_r_den) * (2. / (1. + r_period)) + ema_r_den
 			ema_s_den = (ema_r_den - ema_s_den) * (2. / (1. + s_period)) + ema_s_den
 
-			output.push(100. * ema_s_num / (0.5 * ema_s_den))
+			output.push(100 * ema_s_num / (0.5 * ema_s_den))
 		}
 
 		return output
@@ -5619,7 +5619,7 @@ export class Indicators {
 			z_ema_num = y_ema_num = source[i] - price
 			z_ema_den = y_ema_den = Math.abs(source[i] - price)
 
-			output.push(100. * (z_ema_den ? z_ema_num / z_ema_den : 0))
+			output.push(100 * (z_ema_den ? z_ema_num / z_ema_den : 0))
 
 			price = source[i]
 		}
@@ -5632,7 +5632,7 @@ export class Indicators {
 			z_ema_den = (y_ema_den - z_ema_den) * 2. / (1. + z_period) + z_ema_den
 
 
-			output.push(100. * (z_ema_den ? z_ema_num / z_ema_den : 0))
+			output.push(100 * (z_ema_den ? z_ema_num / z_ema_den : 0))
 
 			price = source[i]
 		}
