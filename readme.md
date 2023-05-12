@@ -13,10 +13,6 @@ Browser, ES6, CommonJS
 ### About
 Fastest Technical Indicators written in typescript
 
-### Benchmark and Tests  
-All indicators are `1.3x` to `100x` faster than available indicators on github, and heavily tested    
-Benchmark cases: @ixjb94/indicators, node-talib, tulipnode, technicalindicators, pandas_ta    
-
 ### Installation
 ```
 npm install @ixjb94/indicators
