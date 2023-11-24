@@ -13,6 +13,15 @@ Browser, ES6, CommonJS
 ### About
 Fastest Technical Indicators written in typescript
 
+### Tests (Jest)
+All of the indicators data have been tested with TradingView data and other Libraries.    
+You can find few in [./tests](https://github.com/ixjb94/indicators/tree/master/tests) folder.    
+(Or you can run: npm test)    
+Note: all data have been tested with at least last 3 (tail) of TradingView's data.
+
+### Comparison with TradingView (EMA 10)
+[Indicators Data Test](https://github.com/ixjb94/indicators-data-test)
+
 ### Installation
 ```
 npm install @ixjb94/indicators
@@ -197,9 +206,6 @@ node-talib, tulipnode, technicalindicators, pandas_ta
 | smi             | Stochastic Momentum Index             | ✅                  |
 | tsi             | True Strength Index                   | ✅                  |
 | vwap            | Volume-Weighted Average Price         | ✅                  |
-
-### Comparison with TradingView (EMA 10)
-[Indicators Data Test](https://github.com/ixjb94/indicators-data-test)
 
 ### Icon by
 ```
