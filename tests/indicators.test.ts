@@ -56,7 +56,7 @@ class Helper {
 }
 
 // ################################# Test
-describe('Indicators', () => {
+describe("Indicators vs TradingView", () => {
 
     it("Average True Range ::: atr 14", async () => {
         const indicator = await ta.atr(high, low, close, 14)
