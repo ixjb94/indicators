@@ -25,6 +25,9 @@ Data Source: [Binance Futures ::: Binance Vision]( https://data.binance.vision/d
 ### Comparison with TradingView (EMA 10)
 [Indicators Data Test](https://github.com/ixjb94/indicators-data-test)    
 
+### Benchmark
+[See full Benchmark info](https://github.com/ixjb94/indicators-benchmark)    
+
 ### Installation
 ```
 npm install @ixjb94/indicators
