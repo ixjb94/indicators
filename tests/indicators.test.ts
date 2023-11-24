@@ -61,84 +61,84 @@ describe('Indicators', () => {
     it("Average True Range ::: atr 14", async () => {
         const indicator = await ta.atr(high, low, close, 14)
         const result = new Helper(indicator).lastNReverse(3).removeFloat(5).getResult()
-        expect(result).toEqual([0.00021, 0.00022, 0.00023])
+        expect(result).toEqual([0.00168, 0.00174, 0.00176])
     })
 
     it("Bollinger Bands Lower ::: bbands 20, 2", async () => {
         const indicator = await ta.bbands(close, 20, 2)
         const result = new Helper(indicator[0]).lastNReverse(3).removeFloat(5).getResult()
-        expect(result).toEqual([0.07562, 0.07561, 0.07559])
+        expect(result).toEqual([0.06756, 0.06764, 0.06773])
     })
 
     it("Bollinger Bands Middle ::: bbands 20, 2", async () => {
         const indicator = await ta.bbands(close, 20, 2)
         const result = new Helper(indicator[1]).lastNReverse(3).removeFloat(5).getResult()
-        expect(result).toEqual([0.07604, 0.07602, 0.07601])
+        expect(result).toEqual([0.06894, 0.06898, 0.06903])
     })
 
     it("Bollinger Bands Upper ::: bbands 20, 2", async () => {
         const indicator = await ta.bbands(close, 20, 2)
         const result = new Helper(indicator[2]).lastNReverse(3).removeFloat(5).getResult()
-        expect(result).toEqual([0.07646, 0.07644, 0.07643])
+        expect(result).toEqual([0.07032, 0.07033, 0.07032])
     })
 
     it("Commodity Channel Index ::: cci 20", async () => {
         const indicator = await ta.cci(high ,low, close, 20)
         const result = new Helper(indicator).lastNReverse(3).removeFloat(5).getResult()
-        expect(result).toEqual([55.33649, 53.82779, 70.93023])
+        expect(result).toEqual([-94.20992, -170.04688, -183.57488])
     })
     
     it("Donchian Channels Upper ::: dc 20", async () => {
         const indicator = await ta.dc(high, low, 20)
         const result = new Helper(indicator[0]).lastNReverse(3).removeFloat(5).getResult()
-        expect(result).toEqual([0.07640, 0.07640, 0.07640])
+        expect(result).toEqual([0.07093, 0.07093, 0.07093])
     })
 
     it("Donchian Channels Middle ::: dc 20", async () => {
         const indicator = await ta.dc(high, low, 20)
         const result = new Helper(indicator[1]).lastNReverse(3).removeFloat(5).getResult()
-        expect(result).toEqual([0.0760, 0.0760, 0.0760])
+        expect(result).toEqual([0.06821, 0.06821, 0.06821])
     })
 
     it("Donchian Channels Lower ::: dc 20", async () => {
         const indicator = await ta.dc(high, low, 20)
         const result = new Helper(indicator[2]).lastNReverse(3).removeFloat(5).getResult()
-        expect(result).toEqual([0.07559, 0.07559, 0.07559])
+        expect(result).toEqual([0.06549, 0.06549, 0.06549])
     })
 
     it("Exponential Moving Average ::: ema 10", async () => {
         const indicator = await ta.ema(close, 10)
         const result = new Helper(indicator).lastNReverse(3).removeFloat(5).getResult()
-        expect(result).toEqual([0.07615, 0.07614, 0.07614])
+        expect(result).toEqual([0.06872, 0.06882, 0.06896])
     })
 
     it("Hull Moving Average ::: hma 10", async () => {
         const indicator = await ta.hma(close, 10)
         const result = new Helper(indicator).lastNReverse(3).removeFloat(5).getResult()
-        expect(result).toEqual([0.07620, 0.07620, 0.07620])
+        expect(result).toEqual([0.06806, 0.0684, 0.06885])
     })
 
     it("Rate of Change ::: roc 20", async () => {
         const indicator = await ta.roc(close, 9)
         const result = new Helper(indicator).lastNReverse(3).removeFloat(5).getResult()
-        expect(result).toEqual([0.00092, -0.00236, -0.00144])
+        expect(result).toEqual([-0.01897, -0.00656, -0.02082])
     })
 
     it("Simple Moving Average ::: sma 20", async () => {
         const indicator = await ta.sma(close, 20)
         const result = new Helper(indicator).lastNReverse(3).removeFloat(5).getResult()
-        expect(result).toEqual([0.07604, 0.07602, 0.07601])
+        expect(result).toEqual([0.06894, 0.06898, 0.06903])
     })
 
     it("Stochastic Oscillator (Base) ::: stoch 14, 1 , 3", async () => {
         const indicator = await ta.stoch(high ,low, close, 14, 1 , 3)
         const result = new Helper(indicator[0]).lastNReverse(3).removeFloat(5).getResult()
-        expect(result).toEqual([67.21311, 59.01639, 66.66667])
+        expect(result).toEqual([50.91912, 49.44853, 32.35294])
     })
 
     it("Stochastic Oscillator (Moving Average) ::: stoch 14, 1 , 3", async () => {
         const indicator = await ta.stoch(high ,low, close, 14, 1 , 3)
         const result = new Helper(indicator[1]).lastNReverse(3).removeFloat(5).getResult()
-        expect(result).toEqual([64.29872, 69.67213, 76.12613])
+        expect(result).toEqual([44.2402, 57.68242, 55.03796])
     })
 })

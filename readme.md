@@ -18,8 +18,8 @@ All of the indicators data have been tested with TradingView data and other Libr
 You can find few in [./tests](https://github.com/ixjb94/indicators/tree/master/tests) folder.    
 (Or you can run: npm test)    
 Note: All data have been tested with at least last 3 (tail) of TradingView's data.    
-Data Window: DOGEUSDT-15m-2023-11-23    
-Data Source: [Binance Futures ::: Binance Vision]( https://data.binance.vision/?prefix=data/futures/um/daily/klines/DOGEUSDT/15m)
+Data Window: DOGEUSDT-4h-2023-10 (October)     
+Data Source: [Binance Futures ::: Binance Vision]( https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/4h/)
 
 ### Comparison with TradingView (EMA 10)
 [Indicators Data Test](https://github.com/ixjb94/indicators-data-test)
