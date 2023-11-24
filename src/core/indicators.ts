@@ -1669,6 +1669,107 @@ export class Indicators {
 				sum2 += input[i];
 			}
 		}
+
+		// Start ti_buffer_new
+		const buff: BufferNewQPush = {
+			size: periodsqrt,
+			pushes: 0,
+			index: 0,
+			vals: [],
+		}
+		// End ti_buffer_new
+
+		for (i = period-1; i < size; ++i) {
+			weight_sum += input[i] * period;
+			sum += input[i];
+	
+			weight_sum2 += input[i] * period2;
+			sum2 += input[i];
+	
+			const wma = weight_sum / weights;
+			const wma2 = weight_sum2 / weights2;
+			const diff = 2 * wma2 - wma;
+	
+			weight_sumsqrt += diff * periodsqrt;
+			sumsqrt += diff;
+	
+			// Start ti_buffer_qpush
+			// BUFFER = buff
+			// VAL    = diff
+			// ti_buffer_qpush(buff, diff)
+			buff.vals[buff.index] = diff
+			buff.index = buff.index + 1
+			if (buff.index >= buff.size) buff.index = 0
+			// End ti_buffer_qpush
+	
+			if (i >= (period-1) + (periodsqrt-1)) {
+				output.push(weight_sumsqrt / weightssqrt)
+	
+				weight_sumsqrt -= sumsqrt;
+				// ## Start ti_buffer_get
+				// BUFFER = buff
+				// VAL    = 1
+				// ((BUFFER)->vals[((BUFFER)->index + (BUFFER)->size - 1 + (VAL)) % (BUFFER)->size])
+				const a = buff.vals[buff.index]
+				const b = (buff.size - 1) + 1 // + 1 = VAL
+				const c = buff.size
+				const buffer_get = a + b % c
+				// ## End ti_buffer_get
+
+				sumsqrt -= buffer_get
+			} else {
+				weight_sumsqrt -= sumsqrt
+			}
+	
+			weight_sum -= sum;
+			sum -= input[i-period+1];
+	
+			weight_sum2 -= sum2;
+			sum2 -= input[i-period2+1];
+		}
+
+		return output
+	}
+
+	/**
+	 * Older version of HMA, this calls another function to execute.
+	 * @param input 
+	 * @param period 
+	 * @param size 
+	 * @returns 
+	 * @deprecated
+	 */
+	async DEP_hma(input: number[], period: number, size=input.length): Promise<Array<number>> {
+
+		const output: number[] = []
+	
+		const period2 = Math.floor(period / 2)
+		const periodsqrt = Math.floor(Math.sqrt(period))
+	
+		const weights = period * (period+1) / 2;
+		const weights2 = period2 * (period2+1) / 2;
+		const weightssqrt = periodsqrt * (periodsqrt+1) / 2;
+	
+		let sum = 0; /* Flat sum of previous numbers. */
+		let weight_sum = 0; /* Weighted sum of previous numbers. */
+	
+		let sum2 = 0;
+		let weight_sum2 = 0;
+	
+		let sumsqrt = 0;
+		let weight_sumsqrt = 0;
+	
+		/* Setup up the WMA(period) and WMA(period/2) on the input. */
+		let i;
+		for (i = 0; i < period-1; ++i) {
+			weight_sum += input[i] * (i+1);
+			sum += input[i];
+	
+			if (i >= period - period2) {
+				weight_sum2 += input[i] * (i+1-(period-period2));
+				sum2 += input[i];
+			}
+		}
 	
 		const buff = new ti_buffer(periodsqrt)
 	
