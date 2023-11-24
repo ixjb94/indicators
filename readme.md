@@ -199,7 +199,7 @@ node-talib, tulipnode, technicalindicators, pandas_ta
 | vwap            | Volume-Weighted Average Price         | ✅                  |
 
 ### Comparison with TradingView (EMA 10)
-![Indicators Data Test](https://github.com/ixjb94/indicators-data-test)
+[Indicators Data Test](https://github.com/ixjb94/indicators-data-test)
 
 ### Icon by
 ```
