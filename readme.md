@@ -19,10 +19,11 @@ You can find few in [./tests](https://github.com/ixjb94/indicators/tree/master/t
 (Or you can run: npm test)    
 Note: All data have been tested with at least last 3 (tail) of TradingView's data.    
 Data Window: DOGEUSDT-4h-2023-10 (October)     
-Data Source: [Binance Futures ::: Binance Vision]( https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/4h/)
+Data Source: [Binance Futures ::: Binance Vision]( https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/4h/)    
+![Tests](https://raw.githubusercontent.com/ixjb94/indicators/master/images/tests.png "Tests")    
 
 ### Comparison with TradingView (EMA 10)
-[Indicators Data Test](https://github.com/ixjb94/indicators-data-test)
+[Indicators Data Test](https://github.com/ixjb94/indicators-data-test)    
 
 ### Installation
 ```
