@@ -26,6 +26,19 @@ export class Indicators {
 		return result
 	}
 
+	floor(x: number) {
+		return x < 0 ? ~~x - 1 : ~~x;
+	}
+
+	sqrt(number: number, guess = number / 2.0): number {
+		let betterGuess = (guess + number / guess) / 2.0
+		let difference = guess > betterGuess ? guess - betterGuess : betterGuess - guess
+		if (difference < 0.0000001) {
+			return betterGuess
+		} else {
+			return this.sqrt(number, betterGuess)
+		}
+	}
 	// ################## Indicators
 
 	/**
@@ -1642,8 +1655,11 @@ export class Indicators {
 
 		const output: number[] = []
 	
-		const period2 = Math.floor(period / 2)
-		const periodsqrt = Math.floor(Math.sqrt(period))
+		// const period2 = Math.floor(period / 2)
+		// const periodsqrt = Math.floor(Math.sqrt(period))
+		
+		const period2 = this.floor(period / 2)
+		const periodsqrt = this.floor(this.sqrt(period))
 	
 		const weights = period * (period+1) / 2;
 		const weights2 = period2 * (period2+1) / 2;
