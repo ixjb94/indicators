@@ -198,6 +198,9 @@ node-talib, tulipnode, technicalindicators, pandas_ta
 | tsi             | True Strength Index                   | ✅                  |
 | vwap            | Volume-Weighted Average Price         | ✅                  |
 
+### Comparison with TradingView (EMA 10)
+![Indicators Data Test](https://github.com/ixjb94/indicators-data-test)
+
 ### Icon by
 ```
 https://www.flaticon.com/free-icon/bar-graph_3501061
