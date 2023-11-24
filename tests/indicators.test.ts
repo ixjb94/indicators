@@ -118,13 +118,25 @@ describe('Indicators', () => {
         expect(result).toEqual([0.07620, 0.07620, 0.07620])
     })
 
-    it("Stochastic Oscillator (Base)::: stoch 14, 1 , 3", async () => {
+    it("Rate of Change ::: roc 20", async () => {
+        const indicator = await ta.roc(close, 9)
+        const result = new Helper(indicator).lastNReverse(3).removeFloat(5).getResult()
+        expect(result).toEqual([0.00092, -0.00236, -0.00144])
+    })
+
+    it("Simple Moving Average ::: sma 20", async () => {
+        const indicator = await ta.sma(close, 20)
+        const result = new Helper(indicator).lastNReverse(3).removeFloat(5).getResult()
+        expect(result).toEqual([0.07604, 0.07602, 0.07601])
+    })
+
+    it("Stochastic Oscillator (Base) ::: stoch 14, 1 , 3", async () => {
         const indicator = await ta.stoch(high ,low, close, 14, 1 , 3)
         const result = new Helper(indicator[0]).lastNReverse(3).removeFloat(5).getResult()
         expect(result).toEqual([67.21311, 59.01639, 66.66667])
     })
 
-    it("Stochastic Oscillator (Moving Average)::: stoch 14, 1 , 3", async () => {
+    it("Stochastic Oscillator (Moving Average) ::: stoch 14, 1 , 3", async () => {
         const indicator = await ta.stoch(high ,low, close, 14, 1 , 3)
         const result = new Helper(indicator[1]).lastNReverse(3).removeFloat(5).getResult()
         expect(result).toEqual([64.29872, 69.67213, 76.12613])
