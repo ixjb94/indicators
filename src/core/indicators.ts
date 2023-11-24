@@ -3094,7 +3094,7 @@ export class Indicators {
 	 * @param kslow 
 	 * @param dperiod 
 	 * @param size 
-	 * @returns 
+	 * @returns [stoch, stoch_ma]
 	 */
 	async stoch(
 		high: Array<number>, low: Array<number>,

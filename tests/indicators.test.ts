@@ -117,4 +117,16 @@ describe('Indicators', () => {
         const result = new Helper(indicator).lastNReverse(3).removeFloat(5).getResult()
         expect(result).toEqual([0.07620, 0.07620, 0.07620])
     })
+
+    it("Stochastic Oscillator (Base)::: stoch 14, 1 , 3", async () => {
+        const indicator = await ta.stoch(high ,low, close, 14, 1 , 3)
+        const result = new Helper(indicator[0]).lastNReverse(3).removeFloat(5).getResult()
+        expect(result).toEqual([67.21311, 59.01639, 66.66667])
+    })
+
+    it("Stochastic Oscillator (Moving Average)::: stoch 14, 1 , 3", async () => {
+        const indicator = await ta.stoch(high ,low, close, 14, 1 , 3)
+        const result = new Helper(indicator[1]).lastNReverse(3).removeFloat(5).getResult()
+        expect(result).toEqual([64.29872, 69.67213, 76.12613])
+    })
 })
