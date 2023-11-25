@@ -2161,8 +2161,8 @@ export class Indicators {
 		// if (signal_period < 1) return "Invalid Options"
 		// if (size <= long_period - 1) return "Out of range"
 
-		let short_per = 2 / (short_period + 1)
-		let long_per = 2 / (long_period + 1)
+		const short_per = 2 / (short_period + 1)
+		const long_per = 2 / (long_period + 1)
 		const signal_per = 2 / (signal_period + 1)
 
 		// if (short_period == 12 && long_period == 26) {
