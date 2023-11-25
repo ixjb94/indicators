@@ -11,7 +11,10 @@
 Browser, ES6, CommonJS
 
 ### About
-Fastest Technical Indicators written in typescript
+Fastest Technical Indicators written in TypeScript    
+
+- Zero Dependencies: @ixjb94/Indicators is built from the ground up to be self-contained, with no external dependencies.    
+- No Internal Function Calls: Each Method in the library operates independently.     
 
 ### Tests (Jest)
 All of the indicators data have been tested with TradingView data and other Libraries.    
