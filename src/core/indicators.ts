@@ -1645,13 +1645,14 @@ export class Indicators {
 
 
 	/**
-	 * 
+	 * Remove Buffer Call, Remove Math usage
 	 * @param input 
 	 * @param period 
 	 * @param size 
 	 * @returns 
+	 * @deprecated
 	 */
-	async hma(input: number[], period: number, size=input.length): Promise<Array<number>> {
+	async DEP_hma(input: number[], period: number, size=input.length): Promise<Array<number>> {
 
 		const output: number[] = []
 	
@@ -1748,14 +1749,12 @@ export class Indicators {
 	}
 
 	/**
-	 * Older version of HMA, this calls another function to execute.
 	 * @param input 
 	 * @param period 
 	 * @param size 
 	 * @returns 
-	 * @deprecated
 	 */
-	async DEP_hma(input: number[], period: number, size=input.length): Promise<Array<number>> {
+	async hma(input: number[], period: number, size=input.length): Promise<Array<number>> {
 
 		const output: number[] = []
 	
