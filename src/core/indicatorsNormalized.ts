@@ -911,8 +911,6 @@ export class IndicatorsNormalized {
 	}
 
 	/**
-	 * @TODO Create better version
-	 * 
 	 * @param a 
 	 * @param b 
 	 * @param size 
@@ -926,11 +924,11 @@ export class IndicatorsNormalized {
 					 || (a[i] < b[i] && a[i-1] >= b[i-1])
 			)
 		}
+
+		return output
 	}
 
 	/**
-	 * @TODO Create better version
-	 * 
 	 * @param a 
 	 * @param b 
 	 * @param size 
@@ -943,6 +941,8 @@ export class IndicatorsNormalized {
 		for (let i = 1; i < size; ++i) {
 			output.push(a[i] > b[i] && a[i-1] <= b[i-1])
 		}
+
+		return output
 	}
 
 	/**
@@ -4849,10 +4849,10 @@ export class IndicatorsNormalized {
 	}
 
 	/**
-	 * @ChatGPT
 	 * @param highs 
 	 * @param lows 
-	 * @param period [upper, lower, middle]
+	 * @param period
+	 * @returns [upper, middle, lower]
 	 */
 	async dc(highs: number[], lows: number[], period: number) {
 		

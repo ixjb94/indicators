@@ -894,8 +894,6 @@ export class Indicators {
 	}
 
 	/**
-	 * @TODO Create better version
-	 * 
 	 * @param a 
 	 * @param b 
 	 * @param size 
@@ -910,8 +908,17 @@ export class Indicators {
 					 || (a[i] < b[i] && a[i-1] >= b[i-1])
 			)
 		}
+
+		return output
 	}
 
+	/**
+	 * 
+	 * @param a 
+	 * @param b 
+	 * @param size 
+	 * @returns 
+	 */
 	async crossover(a: number[], b: number[], size: number = a.length) {
 	
 		const output: boolean[] = []
@@ -919,6 +926,8 @@ export class Indicators {
 		for (let i = 1; i < size; ++i) {
 			output.push(a[i] > b[i] && a[i-1] <= b[i-1])
 		}
+
+		return output
 	}
 
 	/**
@@ -4906,10 +4915,10 @@ export class Indicators {
 	}
 
 	/**
-	 * @ChatGPT
 	 * @param highs 
 	 * @param lows 
 	 * @param period 
+	 * @returns [upper, middle, lower]
 	 */
 	async dc(highs: number[], lows: number[], period: number): Promise<[number[], number[], number[]]> {
 		
