@@ -919,7 +919,7 @@ export class IndicatorsNormalized {
 	
 		const output: boolean[] = []
 	
-		for (let i = 1; i < size; ++i) {
+		for (let i = 0; i < size; ++i) {
 			output.push( (a[i] > b[i] && a[i-1] <= b[i-1])
 					 || (a[i] < b[i] && a[i-1] >= b[i-1])
 			)
@@ -938,7 +938,7 @@ export class IndicatorsNormalized {
 	
 		const output: boolean[] = []
 	
-		for (let i = 1; i < size; ++i) {
+		for (let i = 0; i < size; ++i) {
 			output.push(a[i] > b[i] && a[i-1] <= b[i-1])
 		}
 
