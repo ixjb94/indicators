@@ -131,6 +131,9 @@ node-talib, tulipnode, technicalindicators, pandas_ta
 | cosh            | Vector Hyperbolic Cosine              | ✅                  |
 | crossany        | Crossany                              | ✅                  |
 | crossover       | Crossover                             | ✅                  |
+| crossover       | Crossover                             | ✅                  |
+| crossOverNumber | Crossover a number                    | ✅                  |
+| crossUnderNumber| Crossunder a number                   | ✅                  |
 | cvi             | Chaikins Volatility                   | ✅                  |
 | decay           | Linear Decay                          | ✅                  |
 | dema            | Double Exponential Moving Average     | ✅                  |
