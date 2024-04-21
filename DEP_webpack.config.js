@@ -1,14 +1,8 @@
 module.exports = {
     mode: "production",
-    entry: {
-        "browser": "./src/index.ts",
-        "browser-indicators": "./src/core/indicators.ts",
-        "browser-indicators-sync": "./src/core/indicatorsSync.ts",
-        "browser-indicatorsNormalized": "./src/core/indicatorsNormalized.ts",
-        "browser-indicatorsNormalized-sync": "./src/core/indicatorsNormalizedSync.ts",
-    },
+    entry: "./src/index.ts",
     output: {
-        filename: "[name].js",
+        filename: "indicators-browser.js",
         path: __dirname + "/dist",
         library: "indicators",
         libraryTarget: "umd",
@@ -25,4 +19,4 @@ module.exports = {
             },
         ],
     },
-};
+}
