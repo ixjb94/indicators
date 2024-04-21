@@ -160,7 +160,7 @@ node-talib, tulipnode, technicalindicators, pandas_ta
 | cmo             | Chande Momentum Oscillator            | ✅                  |
 | crossany        | Crossany                              | ✅                  |
 | crossover       | Crossover                             | ✅                  |
-| crossover       | Crossover                             | ✅                  |
+| crossunder      | Crossunder                            | ✅                  |
 | crossOverNumber | Crossover a number                    | ✅                  |
 | crossUnderNumber| Crossunder a number                   | ✅                  |
 | cvi             | Chaikins Volatility                   | ✅                  |
