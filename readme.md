@@ -54,7 +54,30 @@ index.html example:
 	<title>My Indicators</title>
 </head>
 <body>
-	<script src="./node_modules/@ixjb94/indicators/dist/indicators-browser.js"></script>
+
+	<!--
+		PLEASE NOTE: you probably just need one of these
+		- browser.js
+		- browser-indicators.js
+		- browser-indicatorsNormalized.js
+		- browser-indicators-sync.js
+		- browser-indicatorsNormalized-sync.js
+	-->
+
+	<!-- all versions -->
+	<script src="./node_modules/@ixjb94/indicators/dist/browser.js"></script>
+
+	<!-- indicators -->
+	<script src="./node_modules/@ixjb94/indicators/dist/browser-indicators.js"></script>
+	
+	<!-- normalized indicators -->
+	<script src="./node_modules/@ixjb94/indicators/dist/browser-indicatorsNormalized.js"></script>
+
+	<!-- sync indicators -->
+	<script src="./node_modules/@ixjb94/indicators/dist/browser-indicators-sync.js"></script>
+
+	<!-- sync normalized indocators -->
+	<script src="./node_modules/@ixjb94/indicators/dist/browser-indicatorsNormalized-sync.js"></script>
 	<script>
 		const library = indicators
 		const ta = new library.Indicators()
@@ -69,13 +92,19 @@ Note: you can move files from node_modules to somewhere else you want to like di
 
 OR you can use unpkg:
 ```
-https://unpkg.com/@ixjb94/indicators@latest/dist/indicators-browser.js
+https://unpkg.com/@ixjb94/indicators@latest/dist/browser.js
+https://unpkg.com/@ixjb94/indicators@latest/dist/browser-indicators.js
+https://unpkg.com/@ixjb94/indicators@latest/dist/browser-indicatorsNormalized.js
+https://unpkg.com/@ixjb94/indicators@latest/dist/browser-indicators-sync.js
+https://unpkg.com/@ixjb94/indicators@latest/dist/browser-indicatorsNormalized-sync.js
 ```
 
-### Indicators Contains
-Indicators contains this classes:    
+### Indicators Consists Of
+Indicators consists of these classes:    
 1- Indicators: `new Indicators()`    
 2- IndicatorsNormalized: `new IndicatorsNormalized()`    
+3- IndicatorsSync: `new IndicatorsSync()`    
+4- IndicatorsNormalizedSync: `new IndicatorsNormalizedSync()`    
 
 Q: What is the difference between `Indicators` and `IndicatorsNormalized`?    
 A: `IndicatorsNormalized` will fill the gap for you, example (SMA 3 with 5 closes):
@@ -92,7 +121,8 @@ Note: Please note that the performance between `IndicatorsNormalized` and `Indic
 so it's better to use `IndicatorsNormalized`.
 
 ### Examples
-**Note: Everything is`Promised`  so you need to do  `.then`  or  `await`**
+**Note: Everything is`Promised`  so you need to do  `.then`  or  `await`**    
+unless you use `Sync` versions.    
 ```js
 let ta = new Indicators()
 
