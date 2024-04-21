@@ -158,7 +158,6 @@ node-talib, tulipnode, technicalindicators, pandas_ta
 | bop             | Balance of Power                      | ✅                  |
 | cci             | Commodity Channel Index               | ✅                  |
 | cmo             | Chande Momentum Oscillator            | ✅                  |
-| cosh            | Vector Hyperbolic Cosine              | ✅                  |
 | crossany        | Crossany                              | ✅                  |
 | crossover       | Crossover                             | ✅                  |
 | crossover       | Crossover                             | ✅                  |
