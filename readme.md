@@ -8,7 +8,7 @@
 ![logo](https://raw.githubusercontent.com/ixjb94/indicators/master/images/bar-graph.png "logo")
 
 ### Supports
-Browser, ES6, CommonJS
+Browser, ES6, CommonJS, NodeJS, Bun
 
 ### About
 Fastest Technical Indicators written in TypeScript    
