@@ -4910,7 +4910,6 @@ export class IndicatorsNormalizedSync {
 	}
 
 	/**
-	 * @ChatGPT
 	 * @param data 
 	 * @param period1 
 	 * @param period2

@@ -4974,7 +4974,6 @@ export class Indicators {
 	}
 
 	/**
-	 * @ChatGPT
 	 * @param data 
 	 * @param period1 
 	 * @param period2
