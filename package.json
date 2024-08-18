@@ -15,8 +15,7 @@
 		"test:coverage": "jest --coverage",
 		"webpack": "npx webpack",
 		"pub": "tsc && npm run webpack && npm version patch && npm publish && git push origin master",
-		"dev": "npm run build && npm run dist",
-		"ts": "tsc"
+		"tsc": "tsc"
 	},
 	"repository": {
 		"type": "git",
