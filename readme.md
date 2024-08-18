@@ -10,7 +10,7 @@
 ### [Version Info](https://github.com/ixjb94/indicators/issues/19)
 
 ### Supports
-Browser, ES6, CommonJS, NodeJS, Bun
+Browser, ES6, CommonJS, NodeJS, Bun, Svelte, React, Angular, etc.
 
 ### About
 Fastest Technical Indicators written in TypeScript    
