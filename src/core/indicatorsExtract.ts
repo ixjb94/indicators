@@ -26,6 +26,13 @@ export async function normalize(originalLength: number, source: Array<number> | 
  * @param source example: sma | rsi | cci | etc.
  * @param length main source length, example: close.length
  */
+
+/**
+ * More efficient
+ * @param source example: sma | rsi | cci | etc.
+ * @param length main source length, example: close.length
+ * @returns 
+ */
 export async function normalize2(source: number[], length: number) {
     const temp = []
     const diff = length - source.length
