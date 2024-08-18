@@ -100,6 +100,13 @@ index.html example:
             // output: [1, 1.5, 2.25, 3.125, 4.0625, 5.03125]
         })
     </script>
+
+	<!-- how to use extracted version (browser-indicators-extract.js) -->
+	<script src="./node_modules/@ixjb94/indicators/dist/browser-indicators-extract.js"></script>
+	<script>
+		const { ema, sma } = indicators
+		ema([1,2,3,4,5,6], 3).then(d => console.log(d))
+	</script>
 </body>
 </html>
 
