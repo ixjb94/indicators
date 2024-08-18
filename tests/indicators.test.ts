@@ -1,8 +1,7 @@
-import { Indicators, IndicatorsNormalized } from "../src"
+import { Indicators } from "../src"
 import { Data } from "./data"
 
 const ta = new Indicators()
-const tan = new IndicatorsNormalized()
 
 // Extract OHLCV
 const open: number[] = []
