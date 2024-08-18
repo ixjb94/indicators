@@ -7,6 +7,8 @@
 
 ![logo](https://raw.githubusercontent.com/ixjb94/indicators/master/images/bar-graph.png "logo")
 
+### [Version Info](https://github.com/ixjb94/indicators/issues/19)
+
 ### Supports
 Browser, ES6, CommonJS, NodeJS, Bun
 
