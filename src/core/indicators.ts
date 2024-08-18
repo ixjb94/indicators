@@ -25,6 +25,17 @@ export class Indicators {
 
 		return result
 	}
+
+	/**
+	 * @param source example: sma | rsi | cci | etc.
+	 * @param length main source length, example: close.length
+	 */
+	async normalize2(source: number[], length: number) {
+		const temp = []
+		const diff = length - source.length
+		temp[diff - 1] = NaN
+		return [...temp, ...source]
+	}
 	// ################## Indicators
 
 	/**
