@@ -23,11 +23,6 @@ export async function normalize(originalLength: number, source: Array<number> | 
 }
 
 /**
- * @param source example: sma | rsi | cci | etc.
- * @param length main source length, example: close.length
- */
-
-/**
  * More efficient
  * @param source example: sma | rsi | cci | etc.
  * @param length main source length, example: close.length
