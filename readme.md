@@ -125,6 +125,9 @@ https://unpkg.com/@ixjb94/indicators@latest/dist/core/extract/ema.js
 https://unpkg.com/@ixjb94/indicators@latest/dist/core/extract/sma.js
 https://unpkg.com/@ixjb94/indicators@latest/dist/core/extract/rsi.js
 // ... and others
+
+see the full list:
+https://unpkg.com/browse/@ixjb94/indicators@1.2.3/dist/core/extract/
 ```
 
 ### Indicators Consists Of
