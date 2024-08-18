@@ -13,7 +13,7 @@ export class Indicators {
 	 * @param empty - example NaN | Null | 0 | false | etc.
 	 * @returns 
 	 */
-	async normalize(originalLength: number, source: Array<number> | string, empty = NaN): Promise<Array<number>> {
+	async normalize(originalLength: number, source: Array<number> | string, empty = NaN) {
 		const diff = originalLength - source.length
 
 		const emptyList: Array<any> = []
@@ -51,7 +51,7 @@ export class Indicators {
 		high: Array<number>, low: Array<number>,
 		close: Array<number>, volume: Array<number>,
 		size: number = close.length
-	): Promise<Array<number>> {
+	) {
 
 		const output = []
 
@@ -84,13 +84,13 @@ export class Indicators {
 		close: Array<number>, volume: Array<number>,
 		short_period: number, long_period: number,
 		size: number = close.length
-	): Promise<Array<number>> {
+	) {
 
 		const start = long_period - 1
 
-		// if (short_period < 1) return "Invalid Options"
-		// if (long_period < short_period) return "Invalid Options"
-		// if (size <= long_period - 1) return "Out of range"
+		// if (short_period < 1) throw new Error("Invalid Options")
+		// if (long_period < short_period) throw new Error("Invalid Options")
+		// if (size <= long_period - 1) throw new Error("Out of range")
 
 		const short_per = 2 / (short_period + 1)
 		const long_per = 2 / (long_period + 1)
@@ -136,12 +136,12 @@ export class Indicators {
 	async adx(
 		high: Array<number>, low: Array<number>,
 		period: number, size: number = high.length
-	): Promise<Array<number>> {
+	) {
 
 		const output = []
 
-		// if (period < 2) return "Invalid Options"
-		// if (size <= (period - 1) * 2) return "Out of range"
+		// if (period < 2) throw new Error("Invalid Options")
+		// if (size <= (period - 1) * 2) throw new Error("Out of range")
 
 		const per = ((period - 1)) / period
 		const invper = 1.0 / (period)
@@ -235,12 +235,12 @@ export class Indicators {
 	async adxr(
 		high: Array<number>, low: Array<number>,
 		period: number, size: number = high.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 2) return "Invalid Options"
-		// if (size <= (period-1) * 3) return "Out of Range"
+		// if (period < 2) throw new Error("Invalid Options")
+		// if (size <= (period-1) * 3) throw new Error("Out of Range")
 
 		const per = (period - 1) / (period)
 		const invper = 1.0 / (period)
@@ -368,13 +368,13 @@ export class Indicators {
 	async ao(
 		high: Array<number>, low: Array<number>,
 		size: number = high.length
-	): Promise<Array<number>> {
+	) {
 
 		const period = 34;
 
 		const output = []
 
-		// if (size <= 33) return "Out of range"
+		// if (size <= 33) throw new Error("Out of range")
 
 		let sum34 = 0
 		let sum5 = 0
@@ -391,7 +391,6 @@ export class Indicators {
 			}
 		}
 
-		// output[output.length] = per5 * sum5 - per34 * sum34
 		output.push(per5 * sum5 - per34 * sum34)
 
 		for (let index = period; index < size; ++index) {
@@ -421,14 +420,14 @@ export class Indicators {
 	async apo(
 		source: Array<number>, short_period: number, long_period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output = []
 
-		// if (short_period < 1) return "Invalid Options"
-		// if (long_period < 2) return "Invalid Options"
-		// if (long_period < short_period) return "Invalid Options"
-		// if (size <= 1) return "Out of range"
+		// if (short_period < 1) throw new Error("Invalid Options")
+		// if (long_period < 2) throw new Error("Invalid Options")
+		// if (long_period < short_period) throw new Error("Invalid Options")
+		// if (size <= 1) throw new Error("Out of range")
 
 		const short_per = 2 / (short_period + 1)
 		const long_per = 2 / (long_period + 1)
@@ -461,13 +460,13 @@ export class Indicators {
 	async aroon(
 		high: Array<number>, low: Array<number>,
 		period: number, size: number = high.length
-	): Promise<Array<Array<number>>> {
+	) {
 
 		const adown: Array<number> = []
 		const aup: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period) throw new Error("Out of range")
 
 		const scale = 100.0 / period
 		let trail = 0
@@ -539,12 +538,12 @@ export class Indicators {
 	async aroonosc(
 		high: Array<number>, low: Array<number>,
 		period: number, size: number = high.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period) throw new Error("Out of range")
 
 		const scale = 100.0 / period
 
@@ -615,12 +614,12 @@ export class Indicators {
 	async atr(
 		high: Array<number>, low: Array<number>, close: Array<number>,
 		period: number, size: number = high.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		const per = 1.0 / period
 
@@ -692,7 +691,7 @@ export class Indicators {
 		open: Array<number>, high: Array<number>,
 		low: Array<number>, close: Array<number>,
 		size: number = open.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
@@ -714,7 +713,7 @@ export class Indicators {
 	async bbands(
 		source: Array<number>, period: number, stddev: number,
 		size: number = source.length
-	): Promise<Array<Array<number>>> {
+	) {
 
 		const lower: Array<number> = []
 		const middle: Array<number> = []
@@ -722,8 +721,8 @@ export class Indicators {
 
 		const scale = 1.0 / period
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let sum = 0
 		let sum2 = 0
@@ -771,7 +770,7 @@ export class Indicators {
 		open: Array<number>, high: Array<number>,
 		low: Array<number>, close: Array<number>,
 		size: number = open.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
@@ -803,12 +802,12 @@ export class Indicators {
 		high: Array<number>, low: Array<number>,
 		close: Array<number>, period: number,
 		size: number = high.length
-	): Promise<Array<number>> {
+	) {
 
 		const scale = 1.0 / period
 	
-		// if (period < 1) return "Invalid Options"
-		// if (size <= (period-1) * 2) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= (period-1) * 2) throw new Error("Out of range")
 
 		const output: number[] = []
 	
@@ -851,12 +850,12 @@ export class Indicators {
 	async cmo(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid options"
-		// if (size <= period) return "Out of range"
+		// if (period < 1) throw new Error("Invalid options")
+		// if (size <= period) throw new Error("Out of range")
 
 		let up_sum = 0
 		let down_sum = 0
@@ -981,7 +980,6 @@ export class Indicators {
 	}
 
 	/**
-	 * @Updated
 	 * @param high 
 	 * @param low 
 	 * @param period 
@@ -991,7 +989,7 @@ export class Indicators {
 	async cvi(
 		high: Array<number>, low: Array<number>,
 		period: number, size: number = high.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: number[] = []
 	
@@ -1032,12 +1030,12 @@ export class Indicators {
 	async _cvi(
 		high: Array<number>, low: Array<number>,
 		period: number, size: number = high.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period * 2 - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period * 2 - 1) throw new Error("Out of range")
 
 		const per = 2 / (period + 1)
 
@@ -1090,7 +1088,7 @@ export class Indicators {
 	async decay(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
@@ -1116,12 +1114,12 @@ export class Indicators {
 	async dema(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= (period-1) * 2) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= (period-1) * 2) throw new Error("Out of range")
 
 		const per = 2 / (period + 1)
 		const per1 = 1.0 - per
@@ -1163,13 +1161,13 @@ export class Indicators {
 	async di(
 		high: Array<number>, low: Array<number>, close: Array<number>,
 		period: number, size: number = high.length
-	): Promise<Array<Array<number>>> {
+	) {
 
 		const plus_di: Array<number> = []
 		const minus_di: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		const per = (period - 1) / (period)
 
@@ -1272,13 +1270,13 @@ export class Indicators {
 	async dm(
 		high: Array<number>, low: Array<number>,
 		period: number, size: number = high.length
-	): Promise<Array<Array<number>>> {
+	) {
 
 		const plus_dm: Array<number> = []
 		const minus_dm: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		const per = (period - 1) / (period)
 
@@ -1349,7 +1347,7 @@ export class Indicators {
 	async dpo(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const back = period / 2 + 1
 
@@ -1357,8 +1355,8 @@ export class Indicators {
 
 		const scale = 1.0 / period
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let sum = 0
 
@@ -1388,12 +1386,12 @@ export class Indicators {
 	async dx(
 		high: Array<number>, low: Array<number>,
 		period: number, size: number = high.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		const per = (period - 1) / (period)
 
@@ -1477,7 +1475,7 @@ export class Indicators {
 	async edecay(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
@@ -1502,12 +1500,12 @@ export class Indicators {
 	async ema(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= 0) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= 0) throw new Error("Out of range")
 
 		const per = 2 / (period + 1)
 
@@ -1533,11 +1531,11 @@ export class Indicators {
 	async emv(
 		high: Array<number>, low: Array<number>, volume: Array<number>,
 		size: number = high.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (size <= 1) return "Out of range"
+		// if (size <= 1) throw new Error("Out of range")
 
 		let last = (high[0] + low[0]) * 0.5
 
@@ -1563,13 +1561,13 @@ export class Indicators {
 	async fisher(
 		high: Array<number>, low: Array<number>,
 		period: number, size: number = high.length
-	): Promise<Array<Array<number>>> {
+	) {
 
 		const fisher: Array<number> = []
 		const signal: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let trail = 0
 		let maxi = -1
@@ -1648,12 +1646,12 @@ export class Indicators {
 	async fosc(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period) throw new Error("Out of range")
 
 		// LINEAR_REGRESSION(size, input, period, output, period+1)
 		// Start LINEAR_REGRESSION
@@ -1709,7 +1707,7 @@ export class Indicators {
 	 * @param size 
 	 * @returns 
 	 */
-	async hma(input: number[], period: number, size=input.length): Promise<Array<number>> {
+	async hma(input: number[], period: number, size=input.length) {
 
 		const output: number[] = []
 	
@@ -1790,12 +1788,12 @@ export class Indicators {
 	async kama(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		const short_per = 2 / (2.0 + 1)
 		const long_per = 2 / (30.0 + 1)
@@ -1848,11 +1846,11 @@ export class Indicators {
 		close: Array<number>, volume: Array<number>,
 		short_period: number, long_period: number,
 		size: number = high.length
-	): Promise<Array<number>> {
+	) {
 
-		// if (short_period < 1) return "Invalid Options"
-		// if (long_period < short_period) return "Invalid Options"
-		// if (size <= 1) return "Out of range"
+		// if (short_period < 1) throw new Error("Invalid Options")
+		// if (long_period < short_period) throw new Error("Invalid Options")
+		// if (size <= 1) throw new Error("Out of range")
 
 		const short_per = 2 / (short_period + 1)
 		const long_per = 2 / (long_period + 1)
@@ -1907,12 +1905,12 @@ export class Indicators {
 	async lag(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 0) return "Invalid Options"
-		// if (size <= period) return "Out of range"
+		// if (period < 0) throw new Error("Invalid Options")
+		// if (size <= period) throw new Error("Out of range")
 
 		for (let i = period; i < size; ++i) {
 			output.push(source[i - period])
@@ -1931,12 +1929,12 @@ export class Indicators {
 	async linreg(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		// Start LINEAR_REGRESSION
 		// LINEAR_REGRESSION(size, input, period, output, period)
@@ -1989,12 +1987,12 @@ export class Indicators {
 	async linregintercept(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		// Start LINEAR_REGRESSION
 		// LINEAR_REGRESSION(size, input, period, output, 1)
@@ -2047,12 +2045,12 @@ export class Indicators {
 	async linregslope(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		// Start LINEAR_REGRESSION
 		// LINEAR_REGRESSION(size, input, period, output, period)
@@ -2104,17 +2102,17 @@ export class Indicators {
 		source: Array<number>, short_period: number,
 		long_period: number, signal_period: number,
 		size: number = source.length
-	): Promise<Array<Array<number>>> {
+	) {
 
 		const macd: Array<number> = []
 		const signal: Array<number> = []
 		const hist: Array<number> = []
 
-		// if (short_period < 1) return "Invalid Options"
-		// if (long_period < 2) return "Invalid Options"
-		// if (long_period < short_period) return "Invalid Options"
-		// if (signal_period < 1) return "Invalid Options"
-		// if (size <= long_period - 1) return "Out of range"
+		// if (short_period < 1) throw new Error("Invalid Options")
+		// if (long_period < 2) throw new Error("Invalid Options")
+		// if (long_period < short_period) throw new Error("Invalid Options")
+		// if (signal_period < 1) throw new Error("Invalid Options")
+		// if (size <= long_period - 1) throw new Error("Out of range")
 
 		const short_per = 2 / (short_period + 1)
 		const long_per = 2 / (long_period + 1)
@@ -2160,11 +2158,11 @@ export class Indicators {
 	async marketfi(
 		high: Array<number>, low: Array<number>,
 		volume: Array<number>, size: number = high.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (size <= 0) return "Out of range"
+		// if (size <= 0) throw new Error("Out of range")
 
 		for (let i = 0; i < size; ++i) {
 			output.push((high[i] - low[i]) / volume[i])
@@ -2184,12 +2182,12 @@ export class Indicators {
 	async mass(
 		high: Array<number>, low: Array<number>,
 		period: number, size: number = high.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= 16 + sum_p) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= 16 + sum_p) throw new Error("Out of range")
 
 		const per = 2 / (9.0 + 1)
 		const per1 = 1.0 - per
@@ -2253,12 +2251,12 @@ export class Indicators {
 	async max(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let trail = 0
 		let maxi = -1
@@ -2303,14 +2301,14 @@ export class Indicators {
 	async md(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
 		const scale = 1.0 / period
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let sum = 0
 
@@ -2345,7 +2343,7 @@ export class Indicators {
 	async medprice(
 		high: Array<number>, low: Array<number>,
 		size: number = high.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
@@ -2370,10 +2368,10 @@ export class Indicators {
 		high: Array<number>, low: Array<number>,
 		close: Array<number>, volume: Array<number>,
 		period: number, size: number = high.length
-	): Promise<Array<number>> {
+	) {
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period) throw new Error("Out of range")
 
 		const output: Array<number> = []
 
@@ -2517,12 +2515,12 @@ export class Indicators {
 	async min(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let trail = 0
 		let mini = -1
@@ -2567,12 +2565,12 @@ export class Indicators {
 	async mom(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period) throw new Error("Out of range")
 
 		for (let i = period; i < size; ++i) {
 			output.push(source[i] - source[i - period])
@@ -2591,13 +2589,13 @@ export class Indicators {
 	async msw(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<Array<number>>> {
+	) {
 
 		const sine: Array<number> = []
 		const lead: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period) throw new Error("Out of range")
 
 		const pi = 3.1415926
 		const tpi = 2 * pi
@@ -2650,12 +2648,12 @@ export class Indicators {
 		high: Array<number>, low: Array<number>,
 		close: Array<number>, period: number,
 		size: number = high.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		const per = 1.0 / (period)
 
@@ -2719,11 +2717,11 @@ export class Indicators {
 	async nvi(
 		close: Array<number>, volume: Array<number>,
 		size: number = close.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (size <= 0) return "Out of range"
+		// if (size <= 0) throw new Error("Out of range")
 
 		let nvi = 1000
 
@@ -2750,7 +2748,7 @@ export class Indicators {
 	async obv(
 		close: Array<number>, volume: Array<number>,
 		size: number = close.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 		let sum = 0
@@ -2785,14 +2783,14 @@ export class Indicators {
 	async ppo(
 		source: Array<number>, short_period: number,
 		long_period: number, size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const ppo: Array<number> = []
 
-		// if (short_period < 1) return "Invalid Options"
-		// if (long_period < 2) return "Invalid Options"
-		// if (long_period < short_period) return "Invalid Options"
-		// if (size <= 1) return "Out of range"
+		// if (short_period < 1) throw new Error("Invalid Options")
+		// if (long_period < 2) throw new Error("Invalid Options")
+		// if (long_period < short_period) throw new Error("Invalid Options")
+		// if (size <= 1) throw new Error("Out of range")
 
 		const short_per = 2 / (short_period + 1)
 		const long_per = 2 / (long_period + 1)
@@ -2824,13 +2822,13 @@ export class Indicators {
 		high: Array<number>, low: Array<number>,
 		accel_step: number, accel_max: number,
 		size: number = high.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (accel_step <= 0) return "Invalid Options"
-		// if (accel_max <= accel_step) return "Invalid Options"
-		// if (size < 2) return "Out of range"
+		// if (accel_step <= 0) throw new Error("Invalid Options")
+		// if (accel_max <= accel_step) throw new Error("Invalid Options")
+		// if (size < 2) throw new Error("Out of range")
 
 		let lng
 		if (high[0] + low[0] <= high[1] + low[1]) {
@@ -2912,11 +2910,11 @@ export class Indicators {
 	async pvi(
 		close: Array<number>, volume: Array<number>,
 		size: number = close.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (size <= 0) return "Out of range"
+		// if (size <= 0) throw new Error("Out of range")
 
 		let pvi = 1000
 		output.push(pvi)
@@ -2945,7 +2943,7 @@ export class Indicators {
 		close: number[],
 		period: number,
 		size: number = close.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: number[] = []
 		const scale = 1.0 / period
@@ -2978,12 +2976,12 @@ export class Indicators {
 	async roc(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period) throw new Error("Out of range")
 
 		for (let i = period; i < size; ++i) {
 			output.push((source[i] - source[i - period]) / source[i - period])
@@ -3002,12 +3000,12 @@ export class Indicators {
 	async rocr(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period) throw new Error("Out of range")
 
 		for (let i = period; i < size; ++i) {
 			output.push(source[i] / source[i - period])
@@ -3026,14 +3024,14 @@ export class Indicators {
 	async rsi(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
 		const per = 1.0 / (period)
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period) throw new Error("Out of range")
 
 		let smooth_up = 0
 		let smooth_down = 0
@@ -3071,14 +3069,14 @@ export class Indicators {
 	async sma(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
 		const scale = 1.0 / period
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let sum = 0
 
@@ -3107,14 +3105,14 @@ export class Indicators {
 	async stddev(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
 		const scale = 1.0 / period
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let sum = 0
 		let sum2 = 0
@@ -3153,14 +3151,14 @@ export class Indicators {
 	async stderr(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
 		const scale = 1.0 / period
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let sum = 0
 		let sum2 = 0
@@ -3207,7 +3205,7 @@ export class Indicators {
 		close: Array<number>,
 		kperiod: number, kslow: number, dperiod: number,
 		size: number = high.length
-	): Promise<Array<Array<number>>> {
+	) {
 
 		const kper = 1.0 / kslow
 		const dper = 1.0 / dperiod
@@ -3215,10 +3213,10 @@ export class Indicators {
 		const stoch: Array<number> = []
 		const stoch_ma: Array<number> = []
 
-		// if (kperiod < 1) return "Invalid Options"
-		// if (kslow < 1) return "Invalid Options"
-		// if (dperiod < 1) return "Invalid Options"
-		// if (size <= (kperiod + kslow + dperiod - 3)) return "Out of range"
+		// if (kperiod < 1) throw new Error("Invalid Options")
+		// if (kslow < 1) throw new Error("Invalid Options")
+		// if (dperiod < 1) throw new Error("Invalid Options")
+		// if (size <= (kperiod + kslow + dperiod - 3)) throw new Error("Out of range")
 
 		let trail = 0
 		let maxi = -1
@@ -3345,14 +3343,14 @@ export class Indicators {
 	async stochrsi(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
 		const per = 1.0 / (period)
 
-		// if (period < 2) return "Invalid Options"
-		// if (size <= (period) * 2 - 1) return "Out of range"
+		// if (period < 2) throw new Error("Invalid Options")
+		// if (size <= (period) * 2 - 1) throw new Error("Out of range")
 
 		const rsi: BufferNewPush = {
 			size: period,
@@ -3466,12 +3464,12 @@ export class Indicators {
 	async sum(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let sum = 0
 
@@ -3500,12 +3498,12 @@ export class Indicators {
 	async tema(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= (period - 1) * 3) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= (period - 1) * 3) throw new Error("Out of range")
 
 		const per = 2 / (period + 1)
 		const per1 = 1.0 - per
@@ -3550,7 +3548,7 @@ export class Indicators {
 	async tr(
 		high: Array<number>, low: Array<number>,
 		close: Array<number>, size: number = high.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 		let truerange
@@ -3588,12 +3586,12 @@ export class Indicators {
 	async trima(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		const weights = 1 / ((period % 2) ?
 			((period / 2 + 1) * (period / 2 + 1)) :
@@ -3650,12 +3648,12 @@ export class Indicators {
 	async trix(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= ((period-1)*3)+1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= ((period-1)*3)+1) throw new Error("Out of range")
 
 		const start = (period * 3) - 2
 		const per = 2 / (period + 1)
@@ -3701,12 +3699,12 @@ export class Indicators {
 	async tsf(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		// Start LINEAR_REGRESSION
 		// LINEAR_REGRESSION(size, input, period, output, period + 1)
@@ -3759,7 +3757,7 @@ export class Indicators {
 	async typprice(
 		high: Array<number>, low: Array<number>,
 		close: Array<number>, size: number = high.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
@@ -3786,14 +3784,14 @@ export class Indicators {
 		close: Array<number>, short_period: number,
 		medium_period: number, long_period: number,
 		size: number = high.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (short_period < 1) return "Invalid Options"
-		// if (medium_period < short_period) return "Invalid Options"
-		// if (long_period < medium_period) return "Invalid Options"
-		// if (size <= medium_period) return "Out of range"
+		// if (short_period < 1) throw new Error("Invalid Options")
+		// if (medium_period < short_period) throw new Error("Invalid Options")
+		// if (long_period < medium_period) throw new Error("Invalid Options")
+		// if (size <= medium_period) throw new Error("Out of range")
 
 
 		const bp_buf: BufferNewPush = {
@@ -3904,14 +3902,14 @@ export class Indicators {
 	async var(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
 		const scale = 1.0 / period
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let sum = 0
 		let sum2 = 0
@@ -3946,12 +3944,12 @@ export class Indicators {
 	async vhf(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period) throw new Error("Out of range")
 
 		let trail = 1
 		let maxi = -1
@@ -4041,18 +4039,18 @@ export class Indicators {
 		source: Array<number>, short_period: number,
 		long_period: number, alpha: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
 		const short_div = 1.0 / short_period
 		const long_div = 1.0 / long_period
 
-		// if (short_period < 1) return "Invalid Options"
-		// if (long_period < short_period) return "Invalid Options"
-		// if (long_period < 2) return "Invalid Options"
-		// if (alpha < 0.0 || alpha > 1.0) return "Invalid Options"
-		// if (size <= long_period - 2) return "Out of range"
+		// if (short_period < 1) throw new Error("Invalid Options")
+		// if (long_period < short_period) throw new Error("Invalid Options")
+		// if (long_period < 2) throw new Error("Invalid Options")
+		// if (alpha < 0.0 || alpha > 1.0) throw new Error("Invalid Options")
+		// if (size <= long_period - 2) throw new Error("Out of range")
 
 		let short_sum = 0
 		let short_sum2 = 0
@@ -4120,15 +4118,15 @@ export class Indicators {
 	async volatility(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
 		const scale = 1.0 / period
 		const annual = Math.sqrt(252) /* Multiplier, number of trading days in year. */
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period) throw new Error("Out of range")
 
 		let sum = 0
 		let sum2 = 0
@@ -4173,16 +4171,16 @@ export class Indicators {
 	async vosc(
 		source: Array<number>, short_period: number,
 		long_period: number, size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
 		const short_div = 1.0 / short_period
 		const long_div = 1.0 / long_period
 
-		// if (short_period < 1) return "Invalid Options"
-		// if (long_period < short_period) return "Invalid Options"
-		// if (size <= long_period - 1) return "Out of range"
+		// if (short_period < 1) throw new Error("Invalid Options")
+		// if (long_period < short_period) throw new Error("Invalid Options")
+		// if (size <= long_period - 1) throw new Error("Out of range")
 
 		let short_sum = 0
 		let long_sum = 0
@@ -4224,12 +4222,12 @@ export class Indicators {
 	async vwma(
 		source: Array<number>, volume: Array<number>,
 		period: number, size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let sum = 0
 		let vsum = 0
@@ -4264,9 +4262,9 @@ export class Indicators {
 	async wad(
 		high: Array<number>, low: Array<number>,
 		close: Array<number>, size: number = high.length
-	): Promise<Array<number>> {
+	) {
 
-		// if (size <= 1) return "Out of range"
+		// if (size <= 1) throw new Error("Out of range")
 
 		const output: Array<number> = []
 		let sum = 0
@@ -4307,7 +4305,7 @@ export class Indicators {
 	async wcprice(
 		high: Array<number>, low: Array<number>,
 		close: Array<number>, size: number = high.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
@@ -4328,12 +4326,12 @@ export class Indicators {
 	async wilders(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		const per = 1.0 / (period)
 
@@ -4368,12 +4366,12 @@ export class Indicators {
 		high: Array<number>, low: Array<number>,
 		close: Array<number>, period: number,
 		size: number = high.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let trail = 0
 		let maxi = -1
@@ -4445,12 +4443,12 @@ export class Indicators {
 	async wma(
 		source: Array<number>, period: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		const weights = period * (period + 1) / 2
 
@@ -4482,7 +4480,7 @@ export class Indicators {
 	 * @param size 
 	 * @returns 
 	 */
-	async zlema(input: number[], period: number, size: number = input.length): Promise<number[]> {
+	async zlema(input: number[], period: number, size: number = input.length) {
 		
 		const lag = Math.floor((period - 1) / 2)
 	
@@ -4519,14 +4517,14 @@ export class Indicators {
 		high: Array<number>, low: Array<number>,
 		close: Array<number>, period: number,
 		size: number = high.length
-	): Promise<Array<Array<number>>> {
+	) {
 
 		const upper_band: Array<number> = []
 		const lower_band: Array<number> = []
 		const middle_point: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		const per = 1. / period
 
@@ -4655,15 +4653,15 @@ export class Indicators {
 		source: Array<number>, period: number,
 		offset: number, sigma: number,
 		size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
 		// validate options
-		// if (period < 1) return "Invalid Options"
-		// if (sigma <= 0) return "Invalid Options"
-		// if ((offset < 0) || (offset > 1)) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (sigma <= 0) throw new Error("Invalid Options")
+		// if ((offset < 0) || (offset > 1)) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		const weights: Array<number> = []
 
@@ -4706,13 +4704,13 @@ export class Indicators {
 		high: Array<number>, low: Array<number>,
 		close: Array<number>, period: number, coef: number,
 		size: number = high.length
-	): Promise<Array<Array<number>>> {
+	) {
 
 		const ce_high: Array<number> = []
 		const ce_low: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let atr = high[0] - low[0]
 
@@ -4828,14 +4826,12 @@ export class Indicators {
 		high: Array<number>, low: Array<number>,
 		close: Array<number>, volume: Array<number>,
 		period: number, size: number = high.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
-
-		// #define CHAIKIN_AD(i) (high[i] - low[i] ? volume[i] * ((close[i] - low[i]) - (high[i] - close[i])) / (high[i] - low[i]) : 0.)
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let period_volume = 0
 		let period_ad_sum = 0
@@ -4872,7 +4868,7 @@ export class Indicators {
 	 * @param period2
 	 * @returns 
 	 */
-	async copp(data: number[], period1: number, period2: number): Promise<number[]> {
+	async copp(data: number[], period1: number, period2: number) {
 
 		const roc1 = new Array(data.length);
 		const roc2 = new Array(data.length);
@@ -4901,7 +4897,7 @@ export class Indicators {
 	 * @param period 
 	 * @returns [upper, middle, lower]
 	 */
-	async dc(highs: number[], lows: number[], period: number): Promise<[number[], number[], number[]]> {
+	async dc(highs: number[], lows: number[], period: number) {
 		
 		const upper: number[] = []
 		const lower: number[] = []
@@ -4927,12 +4923,12 @@ export class Indicators {
 	async fi(
 		close: Array<number>, volume: Array<number>,
 		period: number, size: number = close.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= 1) throw new Error("Out of range")
 
 		const per = 2. / (period + 1.)
 
@@ -4965,13 +4961,13 @@ export class Indicators {
 		high: Array<number>, low: Array<number>,
 		close: Array<number>, period: number,
 		multiple: number, size: number = high.length
-	): Promise<Array<Array<number>>> {
+	) {
 
 		const kc_lower: Array<number> = []
 		const kc_middle: Array<number> = []
 		const kc_upper: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
+		// if (period < 1) throw new Error("Invalid Options")
 
 		const per = 2 / (period + 1)
 
@@ -5030,12 +5026,12 @@ export class Indicators {
 		roc1: number, roc2: number, roc3: number, roc4: number,
 		ma1: number, ma2: number, ma3: number, ma4: number,
 		size: number = source.length
-	): Promise<Array<Array<number>>> {
+	) {
 
 		const kst: Array<number> = []
 		const kst_signal: Array<number> = []
 
-		// if(!(roc1 < roc2 && roc2 < roc3 && roc3 < roc4)) return "Invalid Options"
+		// if(!(roc1 < roc2 && roc2 < roc3 && roc3 < roc4)) throw new Error("Invalid Options")
 
 		// if (roc1 < 1 || roc2 < 1 || roc3 < 1 || roc4 < 1 || ma1 < 1 || ma2 < 1 || ma3 < 1 || ma4 < 1) {
 		// return "Invalid Options"
@@ -5054,8 +5050,6 @@ export class Indicators {
 		const per3 = 2 / (ma3 + 1)
 		const per4 = 2 / (ma4 + 1)
 		const per_signal = 2 / (9 + 1)
-
-		// #define ROC(idx, period) ((real[idx] - real[idx-period]) / real[idx-period])
 
 		function ROC(idx: number, period: number) {
 			return ((source[idx] - source[idx - period]) / source[idx - period])
@@ -5119,13 +5113,13 @@ export class Indicators {
 		high: Array<number>, low: Array<number>,
 		close: Array<number>, period: number,
 		size: number = high.length
-	): Promise<Array<Array<number>>> {
+	) {
 
 		const pbands_lower: Array<number> = []
 		const pbands_upper: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let y_sum = 0.
 		let xy_sum = 0.
@@ -5206,16 +5200,12 @@ export class Indicators {
 	async pfe(
 		source: Array<number>, period: number,
 		ema_period: number, size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period) return "Out of range"
-
-		// #define SIGN(expr) ((expr) > 0 ? 1. : -1.)
-		// #define EMA_NEXT(val) (((val) - ema) * per + ema)
-
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period) throw new Error("Out of range")
 
 		const per = 2 / (ema_period + 1)
 
@@ -5314,13 +5304,13 @@ export class Indicators {
 		high: Array<number>, low: Array<number>,
 		close: Array<number>, period: number,
 		ema_period: number, size: number = high.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (ema_period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (ema_period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let y_sum = 0
 		let xy_sum = 0
@@ -5396,13 +5386,13 @@ export class Indicators {
 	async rmi(
 		source: Array<number>, period: number,
 		lookback_period: number, size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (lookback_period < 1) return "Invalid Options"
-		// if (size <= lookback_period) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (lookback_period < 1) throw new Error("Invalid Options")
+		// if (size <= lookback_period) throw new Error("Out of range")
 
 		let gains_ema
 		let losses_ema
@@ -5434,12 +5424,12 @@ export class Indicators {
 	async rmta(
 		source: Array<number>, period: number,
 		beta: number, size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		const alpha = 1 - beta
 		let b = (1 - alpha) * source[0] + source[0]
@@ -5472,13 +5462,13 @@ export class Indicators {
 	async rvi(
 		source: Array<number>, sma_period: number,
 		stddev_period: number, size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (sma_period < 1) return "Invalid Options"
-		// if (stddev_period < 1) return "Invalid Options"
-		// if (size <= stddev_period-1) return "Out of range"
+		// if (sma_period < 1) throw new Error("Invalid Options")
+		// if (stddev_period < 1) throw new Error("Invalid Options")
+		// if (size <= stddev_period-1) throw new Error("Out of range")
 
 		let y_sum = 0
 		let xy_sum = 0
@@ -5554,12 +5544,12 @@ export class Indicators {
 		close: Array<number>, q_period: number,
 		r_period: number, s_period: number,
 		size: number = high.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
 		// if (q_period < 1 || r_period < 1 || s_period < 1) {
-		//     return "Invalid Options"
+		//     throw new Error("Invalid Options"
 		// }
 
 		let progress = -q_period + 1
@@ -5668,12 +5658,12 @@ export class Indicators {
 	async tsi(
 		source: Array<number>, y_period: number,
 		z_period: number, size: number = source.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
 		// if (y_period < 1 || z_period < 1) {
-		//     return "Invalid Options"
+		//     throw new Error("Invalid Options")
 		// }
 
 		let progress = -1
@@ -5728,11 +5718,11 @@ export class Indicators {
 		high: Array<number>, low: Array<number>,
 		close: Array<number>, volume: Array<number>,
 		period: number, size: number = high.length
-	): Promise<Array<number>> {
+	) {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
+		// if (period < 1) throw new Error("Invalid Options")
 
 		let progress = -period + 1
 

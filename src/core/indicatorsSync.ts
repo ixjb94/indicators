@@ -88,9 +88,9 @@ export class IndicatorsSync {
 
 		const start = long_period - 1
 
-		// if (short_period < 1) return "Invalid Options"
-		// if (long_period < short_period) return "Invalid Options"
-		// if (size <= long_period - 1) return "Out of range"
+		// if (short_period < 1) throw new Error("Invalid Options")
+		// if (long_period < short_period) throw new Error("Invalid Options")
+		// if (size <= long_period - 1) throw new Error("Out of range")
 
 		const short_per = 2 / (short_period + 1)
 		const long_per = 2 / (long_period + 1)
@@ -140,8 +140,8 @@ export class IndicatorsSync {
 
 		const output = []
 
-		// if (period < 2) return "Invalid Options"
-		// if (size <= (period - 1) * 2) return "Out of range"
+		// if (period < 2) throw new Error("Invalid Options")
+		// if (size <= (period - 1) * 2) throw new Error("Out of range")
 
 		const per = ((period - 1)) / period
 		const invper = 1.0 / (period)
@@ -239,8 +239,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 2) return "Invalid Options"
-		// if (size <= (period-1) * 3) return "Out of Range"
+		// if (period < 2) throw new Error("Invalid Options")
+		// if (size <= (period-1) * 3) throw new Error("Out of Range")
 
 		const per = (period - 1) / (period)
 		const invper = 1.0 / (period)
@@ -374,7 +374,7 @@ export class IndicatorsSync {
 
 		const output = []
 
-		// if (size <= 33) return "Out of range"
+		// if (size <= 33) throw new Error("Out of range")
 
 		let sum34 = 0
 		let sum5 = 0
@@ -391,7 +391,6 @@ export class IndicatorsSync {
 			}
 		}
 
-		// output[output.length] = per5 * sum5 - per34 * sum34
 		output.push(per5 * sum5 - per34 * sum34)
 
 		for (let index = period; index < size; ++index) {
@@ -425,10 +424,10 @@ export class IndicatorsSync {
 
 		const output = []
 
-		// if (short_period < 1) return "Invalid Options"
-		// if (long_period < 2) return "Invalid Options"
-		// if (long_period < short_period) return "Invalid Options"
-		// if (size <= 1) return "Out of range"
+		// if (short_period < 1) throw new Error("Invalid Options")
+		// if (long_period < 2) throw new Error("Invalid Options")
+		// if (long_period < short_period) throw new Error("Invalid Options")
+		// if (size <= 1) throw new Error("Out of range")
 
 		const short_per = 2 / (short_period + 1)
 		const long_per = 2 / (long_period + 1)
@@ -466,8 +465,8 @@ export class IndicatorsSync {
 		const adown: Array<number> = []
 		const aup: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period) throw new Error("Out of range")
 
 		const scale = 100.0 / period
 		let trail = 0
@@ -543,8 +542,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period) throw new Error("Out of range")
 
 		const scale = 100.0 / period
 
@@ -619,8 +618,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		const per = 1.0 / period
 
@@ -722,8 +721,8 @@ export class IndicatorsSync {
 
 		const scale = 1.0 / period
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let sum = 0
 		let sum2 = 0
@@ -807,8 +806,8 @@ export class IndicatorsSync {
 
 		const scale = 1.0 / period
 	
-		// if (period < 1) return "Invalid Options"
-		// if (size <= (period-1) * 2) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= (period-1) * 2) throw new Error("Out of range")
 
 		const output: number[] = []
 	
@@ -855,8 +854,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid options"
-		// if (size <= period) return "Out of range"
+		// if (period < 1) throw new Error("Invalid options")
+		// if (size <= period) throw new Error("Out of range")
 
 		let up_sum = 0
 		let down_sum = 0
@@ -981,7 +980,6 @@ export class IndicatorsSync {
 	}
 
 	/**
-	 * @Updated
 	 * @param high 
 	 * @param low 
 	 * @param period 
@@ -1036,8 +1034,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period * 2 - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period * 2 - 1) throw new Error("Out of range")
 
 		const per = 2 / (period + 1)
 
@@ -1120,8 +1118,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= (period-1) * 2) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= (period-1) * 2) throw new Error("Out of range")
 
 		const per = 2 / (period + 1)
 		const per1 = 1.0 - per
@@ -1168,8 +1166,8 @@ export class IndicatorsSync {
 		const plus_di: Array<number> = []
 		const minus_di: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		const per = (period - 1) / (period)
 
@@ -1277,8 +1275,8 @@ export class IndicatorsSync {
 		const plus_dm: Array<number> = []
 		const minus_dm: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		const per = (period - 1) / (period)
 
@@ -1357,8 +1355,8 @@ export class IndicatorsSync {
 
 		const scale = 1.0 / period
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let sum = 0
 
@@ -1392,8 +1390,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		const per = (period - 1) / (period)
 
@@ -1506,8 +1504,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= 0) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= 0) throw new Error("Out of range")
 
 		const per = 2 / (period + 1)
 
@@ -1537,7 +1535,7 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (size <= 1) return "Out of range"
+		// if (size <= 1) throw new Error("Out of range")
 
 		let last = (high[0] + low[0]) * 0.5
 
@@ -1568,8 +1566,8 @@ export class IndicatorsSync {
 		const fisher: Array<number> = []
 		const signal: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let trail = 0
 		let maxi = -1
@@ -1652,8 +1650,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period) throw new Error("Out of range")
 
 		// LINEAR_REGRESSION(size, input, period, output, period+1)
 		// Start LINEAR_REGRESSION
@@ -1701,6 +1699,7 @@ export class IndicatorsSync {
 
 		return output
 	}
+
 
 	/**
 	 * @param input 
@@ -1793,8 +1792,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		const short_per = 2 / (2.0 + 1)
 		const long_per = 2 / (30.0 + 1)
@@ -1849,9 +1848,9 @@ export class IndicatorsSync {
 		size: number = high.length
 	) {
 
-		// if (short_period < 1) return "Invalid Options"
-		// if (long_period < short_period) return "Invalid Options"
-		// if (size <= 1) return "Out of range"
+		// if (short_period < 1) throw new Error("Invalid Options")
+		// if (long_period < short_period) throw new Error("Invalid Options")
+		// if (size <= 1) throw new Error("Out of range")
 
 		const short_per = 2 / (short_period + 1)
 		const long_per = 2 / (long_period + 1)
@@ -1910,8 +1909,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 0) return "Invalid Options"
-		// if (size <= period) return "Out of range"
+		// if (period < 0) throw new Error("Invalid Options")
+		// if (size <= period) throw new Error("Out of range")
 
 		for (let i = period; i < size; ++i) {
 			output.push(source[i - period])
@@ -1934,8 +1933,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		// Start LINEAR_REGRESSION
 		// LINEAR_REGRESSION(size, input, period, output, period)
@@ -1992,8 +1991,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		// Start LINEAR_REGRESSION
 		// LINEAR_REGRESSION(size, input, period, output, 1)
@@ -2050,8 +2049,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		// Start LINEAR_REGRESSION
 		// LINEAR_REGRESSION(size, input, period, output, period)
@@ -2109,11 +2108,11 @@ export class IndicatorsSync {
 		const signal: Array<number> = []
 		const hist: Array<number> = []
 
-		// if (short_period < 1) return "Invalid Options"
-		// if (long_period < 2) return "Invalid Options"
-		// if (long_period < short_period) return "Invalid Options"
-		// if (signal_period < 1) return "Invalid Options"
-		// if (size <= long_period - 1) return "Out of range"
+		// if (short_period < 1) throw new Error("Invalid Options")
+		// if (long_period < 2) throw new Error("Invalid Options")
+		// if (long_period < short_period) throw new Error("Invalid Options")
+		// if (signal_period < 1) throw new Error("Invalid Options")
+		// if (size <= long_period - 1) throw new Error("Out of range")
 
 		const short_per = 2 / (short_period + 1)
 		const long_per = 2 / (long_period + 1)
@@ -2163,7 +2162,7 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (size <= 0) return "Out of range"
+		// if (size <= 0) throw new Error("Out of range")
 
 		for (let i = 0; i < size; ++i) {
 			output.push((high[i] - low[i]) / volume[i])
@@ -2187,8 +2186,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= 16 + sum_p) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= 16 + sum_p) throw new Error("Out of range")
 
 		const per = 2 / (9.0 + 1)
 		const per1 = 1.0 - per
@@ -2256,8 +2255,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let trail = 0
 		let maxi = -1
@@ -2308,8 +2307,8 @@ export class IndicatorsSync {
 
 		const scale = 1.0 / period
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let sum = 0
 
@@ -2371,8 +2370,8 @@ export class IndicatorsSync {
 		period: number, size: number = high.length
 	) {
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period) throw new Error("Out of range")
 
 		const output: Array<number> = []
 
@@ -2520,8 +2519,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let trail = 0
 		let mini = -1
@@ -2570,8 +2569,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period) throw new Error("Out of range")
 
 		for (let i = period; i < size; ++i) {
 			output.push(source[i] - source[i - period])
@@ -2595,8 +2594,8 @@ export class IndicatorsSync {
 		const sine: Array<number> = []
 		const lead: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period) throw new Error("Out of range")
 
 		const pi = 3.1415926
 		const tpi = 2 * pi
@@ -2653,8 +2652,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		const per = 1.0 / (period)
 
@@ -2722,7 +2721,7 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (size <= 0) return "Out of range"
+		// if (size <= 0) throw new Error("Out of range")
 
 		let nvi = 1000
 
@@ -2788,10 +2787,10 @@ export class IndicatorsSync {
 
 		const ppo: Array<number> = []
 
-		// if (short_period < 1) return "Invalid Options"
-		// if (long_period < 2) return "Invalid Options"
-		// if (long_period < short_period) return "Invalid Options"
-		// if (size <= 1) return "Out of range"
+		// if (short_period < 1) throw new Error("Invalid Options")
+		// if (long_period < 2) throw new Error("Invalid Options")
+		// if (long_period < short_period) throw new Error("Invalid Options")
+		// if (size <= 1) throw new Error("Out of range")
 
 		const short_per = 2 / (short_period + 1)
 		const long_per = 2 / (long_period + 1)
@@ -2827,9 +2826,9 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (accel_step <= 0) return "Invalid Options"
-		// if (accel_max <= accel_step) return "Invalid Options"
-		// if (size < 2) return "Out of range"
+		// if (accel_step <= 0) throw new Error("Invalid Options")
+		// if (accel_max <= accel_step) throw new Error("Invalid Options")
+		// if (size < 2) throw new Error("Out of range")
 
 		let lng
 		if (high[0] + low[0] <= high[1] + low[1]) {
@@ -2915,7 +2914,7 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (size <= 0) return "Out of range"
+		// if (size <= 0) throw new Error("Out of range")
 
 		let pvi = 1000
 		output.push(pvi)
@@ -2981,8 +2980,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period) throw new Error("Out of range")
 
 		for (let i = period; i < size; ++i) {
 			output.push((source[i] - source[i - period]) / source[i - period])
@@ -3005,8 +3004,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period) throw new Error("Out of range")
 
 		for (let i = period; i < size; ++i) {
 			output.push(source[i] / source[i - period])
@@ -3031,8 +3030,8 @@ export class IndicatorsSync {
 
 		const per = 1.0 / (period)
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period) throw new Error("Out of range")
 
 		let smooth_up = 0
 		let smooth_down = 0
@@ -3076,8 +3075,8 @@ export class IndicatorsSync {
 
 		const scale = 1.0 / period
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let sum = 0
 
@@ -3112,8 +3111,8 @@ export class IndicatorsSync {
 
 		const scale = 1.0 / period
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let sum = 0
 		let sum2 = 0
@@ -3158,8 +3157,8 @@ export class IndicatorsSync {
 
 		const scale = 1.0 / period
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let sum = 0
 		let sum2 = 0
@@ -3214,10 +3213,10 @@ export class IndicatorsSync {
 		const stoch: Array<number> = []
 		const stoch_ma: Array<number> = []
 
-		// if (kperiod < 1) return "Invalid Options"
-		// if (kslow < 1) return "Invalid Options"
-		// if (dperiod < 1) return "Invalid Options"
-		// if (size <= (kperiod + kslow + dperiod - 3)) return "Out of range"
+		// if (kperiod < 1) throw new Error("Invalid Options")
+		// if (kslow < 1) throw new Error("Invalid Options")
+		// if (dperiod < 1) throw new Error("Invalid Options")
+		// if (size <= (kperiod + kslow + dperiod - 3)) throw new Error("Out of range")
 
 		let trail = 0
 		let maxi = -1
@@ -3350,8 +3349,8 @@ export class IndicatorsSync {
 
 		const per = 1.0 / (period)
 
-		// if (period < 2) return "Invalid Options"
-		// if (size <= (period) * 2 - 1) return "Out of range"
+		// if (period < 2) throw new Error("Invalid Options")
+		// if (size <= (period) * 2 - 1) throw new Error("Out of range")
 
 		const rsi: BufferNewPush = {
 			size: period,
@@ -3469,8 +3468,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let sum = 0
 
@@ -3503,8 +3502,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= (period - 1) * 3) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= (period - 1) * 3) throw new Error("Out of range")
 
 		const per = 2 / (period + 1)
 		const per1 = 1.0 - per
@@ -3591,8 +3590,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		const weights = 1 / ((period % 2) ?
 			((period / 2 + 1) * (period / 2 + 1)) :
@@ -3653,8 +3652,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= ((period-1)*3)+1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= ((period-1)*3)+1) throw new Error("Out of range")
 
 		const start = (period * 3) - 2
 		const per = 2 / (period + 1)
@@ -3704,8 +3703,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		// Start LINEAR_REGRESSION
 		// LINEAR_REGRESSION(size, input, period, output, period + 1)
@@ -3789,10 +3788,10 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (short_period < 1) return "Invalid Options"
-		// if (medium_period < short_period) return "Invalid Options"
-		// if (long_period < medium_period) return "Invalid Options"
-		// if (size <= medium_period) return "Out of range"
+		// if (short_period < 1) throw new Error("Invalid Options")
+		// if (medium_period < short_period) throw new Error("Invalid Options")
+		// if (long_period < medium_period) throw new Error("Invalid Options")
+		// if (size <= medium_period) throw new Error("Out of range")
 
 
 		const bp_buf: BufferNewPush = {
@@ -3909,8 +3908,8 @@ export class IndicatorsSync {
 
 		const scale = 1.0 / period
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let sum = 0
 		let sum2 = 0
@@ -3949,8 +3948,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period) throw new Error("Out of range")
 
 		let trail = 1
 		let maxi = -1
@@ -4047,11 +4046,11 @@ export class IndicatorsSync {
 		const short_div = 1.0 / short_period
 		const long_div = 1.0 / long_period
 
-		// if (short_period < 1) return "Invalid Options"
-		// if (long_period < short_period) return "Invalid Options"
-		// if (long_period < 2) return "Invalid Options"
-		// if (alpha < 0.0 || alpha > 1.0) return "Invalid Options"
-		// if (size <= long_period - 2) return "Out of range"
+		// if (short_period < 1) throw new Error("Invalid Options")
+		// if (long_period < short_period) throw new Error("Invalid Options")
+		// if (long_period < 2) throw new Error("Invalid Options")
+		// if (alpha < 0.0 || alpha > 1.0) throw new Error("Invalid Options")
+		// if (size <= long_period - 2) throw new Error("Out of range")
 
 		let short_sum = 0
 		let short_sum2 = 0
@@ -4126,8 +4125,8 @@ export class IndicatorsSync {
 		const scale = 1.0 / period
 		const annual = Math.sqrt(252) /* Multiplier, number of trading days in year. */
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period) throw new Error("Out of range")
 
 		let sum = 0
 		let sum2 = 0
@@ -4179,9 +4178,9 @@ export class IndicatorsSync {
 		const short_div = 1.0 / short_period
 		const long_div = 1.0 / long_period
 
-		// if (short_period < 1) return "Invalid Options"
-		// if (long_period < short_period) return "Invalid Options"
-		// if (size <= long_period - 1) return "Out of range"
+		// if (short_period < 1) throw new Error("Invalid Options")
+		// if (long_period < short_period) throw new Error("Invalid Options")
+		// if (size <= long_period - 1) throw new Error("Out of range")
 
 		let short_sum = 0
 		let long_sum = 0
@@ -4227,8 +4226,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let sum = 0
 		let vsum = 0
@@ -4265,7 +4264,7 @@ export class IndicatorsSync {
 		close: Array<number>, size: number = high.length
 	) {
 
-		// if (size <= 1) return "Out of range"
+		// if (size <= 1) throw new Error("Out of range")
 
 		const output: Array<number> = []
 		let sum = 0
@@ -4331,8 +4330,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		const per = 1.0 / (period)
 
@@ -4371,8 +4370,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let trail = 0
 		let maxi = -1
@@ -4448,8 +4447,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		const weights = period * (period + 1) / 2
 
@@ -4524,8 +4523,8 @@ export class IndicatorsSync {
 		const lower_band: Array<number> = []
 		const middle_point: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		const per = 1. / period
 
@@ -4659,10 +4658,10 @@ export class IndicatorsSync {
 		const output: Array<number> = []
 
 		// validate options
-		// if (period < 1) return "Invalid Options"
-		// if (sigma <= 0) return "Invalid Options"
-		// if ((offset < 0) || (offset > 1)) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (sigma <= 0) throw new Error("Invalid Options")
+		// if ((offset < 0) || (offset > 1)) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		const weights: Array<number> = []
 
@@ -4710,8 +4709,8 @@ export class IndicatorsSync {
 		const ce_high: Array<number> = []
 		const ce_low: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let atr = high[0] - low[0]
 
@@ -4831,10 +4830,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
-
-		// #define CHAIKIN_AD(i) (high[i] - low[i] ? volume[i] * ((close[i] - low[i]) - (high[i] - close[i])) / (high[i] - low[i]) : 0.)
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let period_volume = 0
 		let period_ad_sum = 0
@@ -4930,8 +4927,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= 1) throw new Error("Out of range")
 
 		const per = 2. / (period + 1.)
 
@@ -4970,7 +4967,7 @@ export class IndicatorsSync {
 		const kc_middle: Array<number> = []
 		const kc_upper: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
+		// if (period < 1) throw new Error("Invalid Options")
 
 		const per = 2 / (period + 1)
 
@@ -5034,7 +5031,7 @@ export class IndicatorsSync {
 		const kst: Array<number> = []
 		const kst_signal: Array<number> = []
 
-		// if(!(roc1 < roc2 && roc2 < roc3 && roc3 < roc4)) return "Invalid Options"
+		// if(!(roc1 < roc2 && roc2 < roc3 && roc3 < roc4)) throw new Error("Invalid Options")
 
 		// if (roc1 < 1 || roc2 < 1 || roc3 < 1 || roc4 < 1 || ma1 < 1 || ma2 < 1 || ma3 < 1 || ma4 < 1) {
 		// return "Invalid Options"
@@ -5053,8 +5050,6 @@ export class IndicatorsSync {
 		const per3 = 2 / (ma3 + 1)
 		const per4 = 2 / (ma4 + 1)
 		const per_signal = 2 / (9 + 1)
-
-		// #define ROC(idx, period) ((real[idx] - real[idx-period]) / real[idx-period])
 
 		function ROC(idx: number, period: number) {
 			return ((source[idx] - source[idx - period]) / source[idx - period])
@@ -5123,8 +5118,8 @@ export class IndicatorsSync {
 		const pbands_lower: Array<number> = []
 		const pbands_upper: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let y_sum = 0.
 		let xy_sum = 0.
@@ -5209,12 +5204,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period) return "Out of range"
-
-		// #define SIGN(expr) ((expr) > 0 ? 1. : -1.)
-		// #define EMA_NEXT(val) (((val) - ema) * per + ema)
-
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period) throw new Error("Out of range")
 
 		const per = 2 / (ema_period + 1)
 
@@ -5317,9 +5308,9 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (ema_period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (ema_period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		let y_sum = 0
 		let xy_sum = 0
@@ -5399,9 +5390,9 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (lookback_period < 1) return "Invalid Options"
-		// if (size <= lookback_period) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (lookback_period < 1) throw new Error("Invalid Options")
+		// if (size <= lookback_period) throw new Error("Out of range")
 
 		let gains_ema
 		let losses_ema
@@ -5437,8 +5428,8 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
-		// if (size <= period - 1) return "Out of range"
+		// if (period < 1) throw new Error("Invalid Options")
+		// if (size <= period - 1) throw new Error("Out of range")
 
 		const alpha = 1 - beta
 		let b = (1 - alpha) * source[0] + source[0]
@@ -5475,9 +5466,9 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (sma_period < 1) return "Invalid Options"
-		// if (stddev_period < 1) return "Invalid Options"
-		// if (size <= stddev_period-1) return "Out of range"
+		// if (sma_period < 1) throw new Error("Invalid Options")
+		// if (stddev_period < 1) throw new Error("Invalid Options")
+		// if (size <= stddev_period-1) throw new Error("Out of range")
 
 		let y_sum = 0
 		let xy_sum = 0
@@ -5558,7 +5549,7 @@ export class IndicatorsSync {
 		const output: Array<number> = []
 
 		// if (q_period < 1 || r_period < 1 || s_period < 1) {
-		//     return "Invalid Options"
+		//     throw new Error("Invalid Options"
 		// }
 
 		let progress = -q_period + 1
@@ -5672,7 +5663,7 @@ export class IndicatorsSync {
 		const output: Array<number> = []
 
 		// if (y_period < 1 || z_period < 1) {
-		//     return "Invalid Options"
+		//     throw new Error("Invalid Options")
 		// }
 
 		let progress = -1
@@ -5731,7 +5722,7 @@ export class IndicatorsSync {
 
 		const output: Array<number> = []
 
-		// if (period < 1) return "Invalid Options"
+		// if (period < 1) throw new Error("Invalid Options")
 
 		let progress = -period + 1
 
