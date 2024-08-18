@@ -4,8 +4,7 @@ module.exports = {
         "browser": "./src/index.ts",
         "browser-indicators": "./src/core/indicators.ts",
         "browser-indicators-sync": "./src/core/indicatorsSync.ts",
-        "browser-indicatorsNormalized": "./src/core/indicatorsNormalized.ts",
-        "browser-indicatorsNormalized-sync": "./src/core/indicatorsNormalizedSync.ts",
+        "browser-indicators-extract": "./src/core/indicatorsExtract.ts",
     },
     output: {
         filename: "[name].js",
