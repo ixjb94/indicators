@@ -25,20 +25,6 @@ export class Indicators {
 
 		return result
 	}
-
-	floor(x: number) {
-		return x < 0 ? ~~x - 1 : ~~x;
-	}
-
-	sqrt(number: number, guess = number / 2.0): number {
-		const betterGuess = (guess + number / guess) / 2.0
-		const difference = guess > betterGuess ? guess - betterGuess : betterGuess - guess
-		if (difference < 0.0000001) {
-			return betterGuess
-		} else {
-			return this.sqrt(number, betterGuess)
-		}
-	}
 	// ################## Indicators
 
 	/**
