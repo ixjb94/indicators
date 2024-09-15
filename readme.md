@@ -9,6 +9,9 @@
 
 ### [Version Info](https://github.com/ixjb94/indicators/issues/19)
 
+### [A JavaScript Version](https://github.com/ixjb94/indicators-js/)
+There is also a newer version written in [JavaScript](https://github.com/ixjb94/indicators-js/).    
+
 ### Supports
 Browser, ES6, CommonJS, NodeJS, Bun, Svelte, React, Angular, etc.
 
