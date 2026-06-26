@@ -12,7 +12,7 @@ export async function dpo(
     size: number = source.length
 ) {
 
-    const back = period / 2 + 1
+    const back = (period >> 1) + 1
 
     const output: Array<number> = []
 
