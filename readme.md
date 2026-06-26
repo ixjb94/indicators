@@ -8,8 +8,14 @@
 
 ### [Version Info](https://github.com/ixjb94/indicators/issues/19)
 
+### [A Vite Version](https://github.com/ixjb94/indicators-vite/)
+There is also an newer version written in [JavaScript:Vite](https://github.com/ixjb94/indicators-vite/)    
+
+### [A TypeScript Version](https://github.com/ixjb94/indicators/)
+There is also an older version written in [TypeScript](https://github.com/ixjb94/indicators/).   
+
 ### [A JavaScript Version](https://github.com/ixjb94/indicators-js/)
-There is also a newer version written in [JavaScript](https://github.com/ixjb94/indicators-js/).    
+There is also an older version written in [JavaScript](https://github.com/ixjb94/indicators-js/).    
 
 ### Supports
 Browser, ES6, CommonJS, NodeJS, Bun, Svelte, React, Angular, etc.
